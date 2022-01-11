@@ -1,4 +1,5 @@
 # QuantConnect JS REST Client
+[![NitayRabi](https://circleci.com/gh/NitayRabi/quantconnect-client.svg?style=svg)](https://app.circleci.com/pipelines/github/NitayRabi/quantconnect-client)
 
 ## Important
 
