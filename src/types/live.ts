@@ -34,6 +34,7 @@ export type ReadLiveListParams = Partial<PaginationParams> & {
 
 export type ReadLiveAlgoParams = ReadProjectParams & {
   deployId: string;
+  subscription?: string;
 };
 
 export type BrokerageEnvironment = "live" | "paper";
