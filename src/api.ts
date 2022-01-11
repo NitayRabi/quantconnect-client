@@ -1,8 +1,8 @@
 import axios from "axios";
-import { EndpointToInterface } from "./types";
+import { EndpointToInterface, EndpointMethod } from "./types";
 import { createInternalError, sha256 } from "./utils";
 
-const BASE_URL = "https://www.quantconnect.com/api/";
+export const BASE_URL = "https://www.quantconnect.com/api";
 
 export type QuantConnectConfig = {
   userId: string;
@@ -18,13 +18,7 @@ const defaultConfig = {
 
 type CreateAPIMethod = <T extends keyof EndpointToInterface>(
   endpoint: T
-) => EndpointToInterface[T]["paramsRequired"] extends true
-  ? (
-      params: EndpointToInterface[T]["params"]
-    ) => Promise<EndpointToInterface[T]["response"]>
-  : (
-      params?: EndpointToInterface[T]["params"]
-    ) => Promise<EndpointToInterface[T]["response"]>;
+) => EndpointMethod<EndpointToInterface[T]>;
 
 const quantconnect = (config: QuantConnectConfig) => {
   const { userId, token, version } = { ...defaultConfig, ...config };
@@ -42,13 +36,18 @@ const quantconnect = (config: QuantConnectConfig) => {
     (endpoint) => async (params: any) => {
       const timestamp = new Date().getTime();
       const hash = await sha256(`${token}:${timestamp}`);
-      const { data } = await axios(endpoint, {
-        baseURL: `${BASE_URL}/${version}`,
-        headers: { Timestamp: timestamp.toString() },
-        auth: { username: userId, password: hash },
-        params,
-      });
-      return data;
+      try {
+        const { data } = await axios(endpoint, {
+          baseURL: `${BASE_URL}/${version}`,
+          headers: { Timestamp: timestamp.toString() },
+          auth: { username: userId, password: hash },
+          params,
+        });
+        return data;
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : `${e}`;
+        throw createInternalError(msg);
+      }
     };
 
   return {
