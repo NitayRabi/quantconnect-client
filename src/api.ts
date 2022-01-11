@@ -20,6 +20,18 @@ type CreateAPIMethod = <T extends keyof EndpointToInterface>(
   endpoint: T
 ) => EndpointMethod<EndpointToInterface[T]>;
 
+/**
+ *
+ * @param config  (userId, token).
+ * @example
+ * ```typescript
+ * import quantconnect from 'quantconnect-client';
+ *
+ * const client = quantconnect({userId, token});
+ * ```
+ *
+ * @return {{authenticate}}
+ */
 const quantconnect = (config: QuantConnectConfig) => {
   const { userId, token, version } = { ...defaultConfig, ...config };
   if (!userId || !token) {
