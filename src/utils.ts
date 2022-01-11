@@ -1,5 +1,3 @@
-import FormData from "form-data";
-
 const ERROR_PREFIX = "quantconnect-client internal error:";
 
 export const createInternalError = (msg: string) =>
@@ -107,12 +105,4 @@ export const sha256 = (ascii: string): string => {
     }
   }
   return result;
-};
-
-export const toFormData = (obj: object) => {
-  const formData = new FormData();
-  Object.entries(obj).forEach(([key, value]) => {
-    formData.append(key, value);
-  });
-  return formData;
 };
