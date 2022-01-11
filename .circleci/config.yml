@@ -15,6 +15,9 @@ workflows:
       - node/run:
           name: Typescript
           yarn-run: build
+          version: "16.10"
+          # If you are using yarn, change the line below from "npm" to "yarn"
+          pkg-manager: yarn
       - node/test:
           name: Test
           # This is the node version to use for the `cimg/node` tag
