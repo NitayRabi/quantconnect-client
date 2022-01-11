@@ -1,6 +1,6 @@
 import FormData from "form-data";
 
-const ERROR_PREFIX = "quantconnect-js internal error:";
+const ERROR_PREFIX = "quantconnect-client internal error:";
 
 export const createInternalError = (msg: string) =>
   new Error(`${ERROR_PREFIX}: ${msg}`);
