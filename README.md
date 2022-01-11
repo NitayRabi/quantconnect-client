@@ -6,7 +6,7 @@
 
 ## General 
 
-this is an open-source wrapper over the REST API described in [QuantConnect's documentation](https://www.quantconnect.com/docs/v2/our-platform/api-reference#)
+An open-source wrapper over the REST API described in [QuantConnect's documentation](https://www.quantconnect.com/docs/v2/our-platform/api-reference#)
 
 The API works both in Node.JS environment and browser environment.
 
