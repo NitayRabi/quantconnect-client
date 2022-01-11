@@ -50,6 +50,7 @@ const result = live.read({ status: "Running" })
 - Files
   - [Create](https://www.quantconnect.com/docs/v2/our-platform/api-reference/file-management/create-file), [Read](https://www.quantconnect.com/docs/v2/our-platform/api-reference/file-management/read-file), [Update](https://www.quantconnect.com/docs/v2/our-platform/api-reference/file-management/update-file), [Delete](https://www.quantconnect.com/docs/v2/our-platform/api-reference/file-management/delete-file)
 - Live
+  - [Create](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/create-live-algorithm)
   - [Read](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/read-live-algorithm/get-live-algorithm-statistics)
 
 ## Roadmap
