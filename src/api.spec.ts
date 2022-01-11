@@ -86,6 +86,14 @@ describe("Endpoints", () => {
       },
       apiMethod: live.create,
     },
+    "live/update/liquidate": {
+      exampleParams: { projectId: 11524 },
+      apiMethod: live.liquidate,
+    },
+    "live/update/stop": {
+      exampleParams: { projectId: 12433 },
+      apiMethod: live.stop,
+    },
     "projects/create": {
       exampleParams: {
         language: "Py",

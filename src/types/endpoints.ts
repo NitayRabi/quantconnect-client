@@ -73,4 +73,14 @@ export type EndpointToInterface = {
     QuantConnectCreateLiveResponse,
     true
   >;
+  "live/update/liquidate": EndpointDescription<
+    ReadProjectParams,
+    QuantConnectResponse,
+    true
+  >;
+  "live/update/stop": EndpointDescription<
+    ReadProjectParams,
+    QuantConnectResponse,
+    true
+  >;
 };

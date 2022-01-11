@@ -44,6 +44,7 @@ const result = live.read({ status: "Running" })
 ```
 
 ## Supported endpoints
+
 - [Authenticate](https://www.quantconnect.com/docs/v2/our-platform/api-reference/authentication)
 - Projects
   - [Create](https://www.quantconnect.com/docs/v2/our-platform/api-reference/project-management/create-project), [Read](https://www.quantconnect.com/docs/v2/our-platform/api-reference/project-management/read-project), [Update](https://www.quantconnect.com/docs/v2/our-platform/api-reference/project-management/update-project), [Delete](https://www.quantconnect.com/docs/v2/our-platform/api-reference/project-management/delete-project)
