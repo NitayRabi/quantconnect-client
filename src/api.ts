@@ -54,6 +54,7 @@ const quantconnect = (config: QuantConnectConfig) => {
     authenticate: createApiMethod("authenticate"),
     live: {
       read: createApiMethod("live/read"),
+      create: createApiMethod("live/create"),
     },
     files: {
       create: createApiMethod("files/create"),
