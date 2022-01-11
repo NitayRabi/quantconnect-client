@@ -5,13 +5,18 @@ import {
   QuantConnectProjectsResponse,
 } from "./projects";
 import { QuantConnectResponse } from "./core";
-import { QuantConnectLiveResponse, ReadLiveParams } from "./live";
+import {
+  QuantConnectLiveResponse,
+  ReadLiveParams,
+  CreateLiveParams,
+} from "./live";
 import {
   CreateFileParams,
   ReadFileParams,
   UpdateFileParams,
   DeleteFileParams,
 } from "./files";
+import { QuantConnectCreateLiveResponse } from ".";
 
 export type EndpointMethod<T extends EndpointDescription<any, any, any>> =
   T["paramsRequired"] extends true
@@ -61,6 +66,11 @@ export type EndpointToInterface = {
   "live/read": EndpointDescription<
     ReadLiveParams,
     QuantConnectLiveResponse,
+    true
+  >;
+  "live/create": EndpointDescription<
+    CreateLiveParams,
+    QuantConnectCreateLiveResponse,
     true
   >;
 };

@@ -70,6 +70,22 @@ describe("Endpoints", () => {
       },
       apiMethod: live.read,
     },
+    "live/create": {
+      exampleParams: {
+        baseLiveAlgorithmSettings: {
+          account: "21333",
+          environment: "live",
+          id: "213123",
+          password: "131scsac",
+          user: "2145t1fcsa1",
+        },
+        compileId: "ld2141414",
+        serverType: "Some server",
+        versionId: "124124",
+        projectId: 1251251,
+      },
+      apiMethod: live.create,
+    },
     "projects/create": {
       exampleParams: {
         language: "Py",
@@ -114,9 +130,10 @@ describe("Endpoints", () => {
         if (exampleParams) {
           expect(queryObject).toBeDefined();
           Object.entries(queryObject!).forEach(([key, value]) => {
+            const val = exampleParams[key as keyof typeof exampleParams];
             expect(value).toEqual(
               // @ts-ignore
-              exampleParams[key as keyof typeof exampleParams].toString()
+              typeof val === "object" ? JSON.stringify(val) : val.toString()
             );
           });
         }
