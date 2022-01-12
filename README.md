@@ -67,11 +67,8 @@ const result = live.read({ status: "Running" })
 ## Roadmap
 
 - [ ] **Tests tests tests**
-- [ ] Documentation per endpoint
 - [ ] Full return types from endpoints
-- [ ] More endpoints parameters
 - [ ] More endpoints support:
-  - [ ] Project management
   - [ ] Backtest management and reports
   - [ ] Compiling code
   - [ ] Downloading data
