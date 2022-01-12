@@ -61,8 +61,10 @@ const result = live.read({ status: "Running" })
 - Live
   - [Create](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/create-live-algorithm)
   - [Read](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/read-live-algorithm/get-live-algorithm-statistics)
+  - [Logs](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/read-live-algorithm/read-live-algorithm-log)
   - [Liquidate](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/update-live-algorithm/liquidate-live-portfolio)
   - [Stop](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/update-live-algorithm/stop-live-algorithm)
+  
 
 ## Roadmap
 
