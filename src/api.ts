@@ -77,6 +77,7 @@ const quantconnect = (config: QuantConnectConfig): QuantConnectClient => {
       create: createApiMethod("live/create"),
       stop: createApiMethod("live/update/stop"),
       liquidate: createApiMethod("live/update/liquidate"),
+      logs: createApiMethod("live/read/logs"),
     },
     files: {
       create: createApiMethod("files/create"),
