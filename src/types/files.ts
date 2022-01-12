@@ -13,7 +13,7 @@ export type CreateFileParams = ReadProjectParams & {
 };
 
 export type ReadFileParams = ReadProjectParams & {
-  fileName: string;
+  name?: string;
 };
 
 export type UpdateFileNameParams = ReadProjectParams & {
@@ -21,7 +21,8 @@ export type UpdateFileNameParams = ReadProjectParams & {
   newFileName: string;
 };
 
-export type UpdateFileContentParams = ReadFileParams & {
+export type UpdateFileContentParams = {
+  fileName: string;
   newFileContents: string;
 };
 
@@ -42,9 +43,12 @@ export type ReadFilesResponse = QuantConnectResponse & {
  * const { files } = quantconnect({ userId, token })
  *
  * const {files, success} = await files.read({ projectId: 214512 });
+ *
+ * // To filter by file name, pass the `name`
+ * const {files, success} = await files.read({ projectId: 214512, name: 'main.py' });
  * ```
  */
-export type ReadFiles = (params?: ReadFileParams) => Promise<ReadFilesResponse>;
+export type ReadFiles = (params: ReadFileParams) => Promise<ReadFilesResponse>;
 
 /**
  *

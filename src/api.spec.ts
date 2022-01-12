@@ -42,7 +42,7 @@ describe("Endpoints", () => {
     },
     "files/read": {
       exampleParams: {
-        fileName: "Some filename",
+        name: "Some filename",
         projectId: 125512,
       },
       apiMethod: files.read,
