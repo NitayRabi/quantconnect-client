@@ -41,6 +41,10 @@
 - [CreateLiveParams](modules.md#createliveparams)
 - [ReadLiveParams](modules.md#readliveparams)
 - [ReadLiveLogParams](modules.md#readlivelogparams)
+- [OrderEvent](modules.md#orderevent)
+- [LiveResultsData](modules.md#liveresultsdata)
+- [LiveAlgoDescription](modules.md#livealgodescription)
+- [QuantConnectLiveListResponse](modules.md#quantconnectlivelistresponse)
 - [QuantConnectLiveResponse](modules.md#quantconnectliveresponse)
 - [QuantConnectLiveLogsResponse](modules.md#quantconnectlivelogsresponse)
 - [QuantConnectCreateLiveResponse](modules.md#quantconnectcreateliveresponse)
@@ -85,7 +89,7 @@ const client = quantconnect({userId, token});
 
 #### Defined in
 
-[api.ts:59](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/api.ts#L59)
+[api.ts:59](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/api.ts#L59)
 
 ## References
 
@@ -108,7 +112,7 @@ Renames and re-exports [quantconnect](modules.md#quantconnect)
 
 #### Defined in
 
-[types/core.ts:1](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/core.ts#L1)
+[types/core.ts:1](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/core.ts#L1)
 
 ___
 
@@ -125,7 +129,7 @@ ___
 
 #### Defined in
 
-[types/core.ts:6](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/core.ts#L6)
+[types/core.ts:6](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/core.ts#L6)
 
 ___
 
@@ -152,7 +156,7 @@ const { success } = await authenticate();
 
 #### Defined in
 
-[types/core.ts:20](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/core.ts#L20)
+[types/core.ts:20](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/core.ts#L20)
 
 ___
 
@@ -169,7 +173,7 @@ ___
 
 #### Defined in
 
-[types/endpoints.ts:32](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/endpoints.ts#L32)
+[types/endpoints.ts:32](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/endpoints.ts#L32)
 
 ___
 
@@ -201,7 +205,7 @@ ___
 
 #### Defined in
 
-[types/endpoints.ts:36](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/endpoints.ts#L36)
+[types/endpoints.ts:36](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/endpoints.ts#L36)
 
 ___
 
@@ -219,7 +223,7 @@ ___
 
 #### Defined in
 
-[types/files.ts:4](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L4)
+[types/files.ts:4](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L4)
 
 ___
 
@@ -229,17 +233,17 @@ ___
 
 #### Defined in
 
-[types/files.ts:10](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L10)
+[types/files.ts:10](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L10)
 
 ___
 
 ### ReadFileParams
 
-Ƭ **ReadFileParams**: [`ReadProjectParams`](modules.md#readprojectparams) & { `fileName`: `string`  }
+Ƭ **ReadFileParams**: [`ReadProjectParams`](modules.md#readprojectparams) & { `name?`: `string`  }
 
 #### Defined in
 
-[types/files.ts:15](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L15)
+[types/files.ts:15](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L15)
 
 ___
 
@@ -249,17 +253,24 @@ ___
 
 #### Defined in
 
-[types/files.ts:19](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L19)
+[types/files.ts:19](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L19)
 
 ___
 
 ### UpdateFileContentParams
 
-Ƭ **UpdateFileContentParams**: [`ReadFileParams`](modules.md#readfileparams) & { `newFileContents`: `string`  }
+Ƭ **UpdateFileContentParams**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `fileName` | `string` |
+| `newFileContents` | `string` |
 
 #### Defined in
 
-[types/files.ts:24](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L24)
+[types/files.ts:24](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L24)
 
 ___
 
@@ -269,7 +280,7 @@ ___
 
 #### Defined in
 
-[types/files.ts:28](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L28)
+[types/files.ts:29](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L29)
 
 ___
 
@@ -279,7 +290,7 @@ ___
 
 #### Defined in
 
-[types/files.ts:30](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L30)
+[types/files.ts:31](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L31)
 
 ___
 
@@ -289,17 +300,17 @@ ___
 
 #### Defined in
 
-[types/files.ts:34](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L34)
+[types/files.ts:35](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L35)
 
 ___
 
 ### ReadFiles
 
-Ƭ **ReadFiles**: (`params?`: [`ReadFileParams`](modules.md#readfileparams)) => `Promise`<[`ReadFilesResponse`](modules.md#readfilesresponse)\>
+Ƭ **ReadFiles**: (`params`: [`ReadFileParams`](modules.md#readfileparams)) => `Promise`<[`ReadFilesResponse`](modules.md#readfilesresponse)\>
 
 #### Type declaration
 
-▸ (`params?`): `Promise`<[`ReadFilesResponse`](modules.md#readfilesresponse)\>
+▸ (`params`): `Promise`<[`ReadFilesResponse`](modules.md#readfilesresponse)\>
 
 **`description`** [Read project's files](https://www.quantconnect.com/docs/v2/our-platform/api-reference/file-management/read-file)
 
@@ -308,13 +319,16 @@ ___
 const { files } = quantconnect({ userId, token })
 
 const {files, success} = await files.read({ projectId: 214512 });
+
+// To filter by file name, pass the `name`
+const {files, success} = await files.read({ projectId: 214512, name: 'main.py' });
 ```
 
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `params?` | [`ReadFileParams`](modules.md#readfileparams) |
+| `params` | [`ReadFileParams`](modules.md#readfileparams) |
 
 ##### Returns
 
@@ -322,7 +336,7 @@ const {files, success} = await files.read({ projectId: 214512 });
 
 #### Defined in
 
-[types/files.ts:47](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L47)
+[types/files.ts:51](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L51)
 
 ___
 
@@ -359,7 +373,7 @@ const {files, success} = await files.create({
 
 #### Defined in
 
-[types/files.ts:63](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L63)
+[types/files.ts:67](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L67)
 
 ___
 
@@ -404,7 +418,7 @@ const {success} = await files.update({
 
 #### Defined in
 
-[types/files.ts:89](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L89)
+[types/files.ts:93](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L93)
 
 ___
 
@@ -437,7 +451,7 @@ const {success} = await files.delete({ projectId: 2134213, name: 'main.py' });
 
 #### Defined in
 
-[types/files.ts:103](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/files.ts#L103)
+[types/files.ts:107](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/files.ts#L107)
 
 ___
 
@@ -447,7 +461,7 @@ ___
 
 #### Defined in
 
-[types/live.ts:4](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L4)
+[types/live.ts:4](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L4)
 
 ___
 
@@ -457,7 +471,7 @@ ___
 
 #### Defined in
 
-[types/live.ts:6](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L6)
+[types/live.ts:6](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L6)
 
 ___
 
@@ -467,7 +481,7 @@ ___
 
 #### Defined in
 
-[types/live.ts:20](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L20)
+[types/live.ts:20](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L20)
 
 ___
 
@@ -477,7 +491,7 @@ ___
 
 #### Defined in
 
-[types/live.ts:31](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L31)
+[types/live.ts:31](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L31)
 
 ___
 
@@ -487,7 +501,7 @@ ___
 
 #### Defined in
 
-[types/live.ts:35](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L35)
+[types/live.ts:35](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L35)
 
 ___
 
@@ -497,7 +511,7 @@ ___
 
 #### Defined in
 
-[types/live.ts:40](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L40)
+[types/live.ts:40](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L40)
 
 ___
 
@@ -517,7 +531,7 @@ ___
 
 #### Defined in
 
-[types/live.ts:42](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L42)
+[types/live.ts:42](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L42)
 
 ___
 
@@ -527,7 +541,7 @@ ___
 
 #### Defined in
 
-[types/live.ts:50](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L50)
+[types/live.ts:50](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L50)
 
 ___
 
@@ -537,7 +551,7 @@ ___
 
 #### Defined in
 
-[types/live.ts:57](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L57)
+[types/live.ts:57](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L57)
 
 ___
 
@@ -547,17 +561,211 @@ ___
 
 #### Defined in
 
-[types/live.ts:58](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L58)
+[types/live.ts:58](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L58)
+
+___
+
+### OrderEvent
+
+Ƭ **OrderEvent**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `OrderId` | `number` |
+| `Id` | `number` |
+| `Symbol` | `Object` |
+| `Symbol.Value` | `string` |
+| `Symbol.ID` | `string` |
+| `Symbol.Permtick` | `string` |
+| `UtcTime` | `string` |
+| `Status` | `Object` |
+| `Status.OrderId` | `number` |
+| `Status.Id` | `number` |
+| `Status.Symbol` | `Object` |
+| `Status.Symbol.Value` | `string` |
+| `Status.Symbol.ID` | `string` |
+| `Status.Symbol.Permtick` | `string` |
+| `Status.UtcTime` | `string` |
+| `Status.Status` | `string` |
+| `Status.FillPrice` | `number` |
+| `Status.FillPriceCurrency` | `string` |
+| `Status.FillQuantity` | `number` |
+| `Status.Direction` | `string` |
+| `Status.Message` | `string` |
+| `Status.IsAssignment` | ``true`` |
+| `Status.StopPrice` | `number` |
+| `Status.LimitPrice` | `number` |
+| `Status.Quantity` | `number` |
+| `OrderFee` | `Object` |
+| `OrderFee.Value` | `Object` |
+| `OrderFee.Value.Amount` | `number` |
+| `OrderFee.Value.Currency` | `string` |
+| `FillPrice` | `number` |
+| `FillPriceCurrency` | `string` |
+| `FillQuantity` | `number` |
+| `Direction` | `string` |
+| `Message` | `string` |
+| `IsAssignment` | ``true`` |
+| `StopPrice` | `number` |
+| `LimitPrice` | `number` |
+| `Quantity` | `number` |
+
+#### Defined in
+
+[types/live.ts:72](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L72)
+
+___
+
+### LiveResultsData
+
+Ƭ **LiveResultsData**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `Holdings` | `Object` |
+| `Holdings.Symbol` | `Object` |
+| `Holdings.Symbol.Value` | `string` |
+| `Holdings.Symbol.ID` | `string` |
+| `Holdings.Symbol.Permtick` | `string` |
+| `Holdings.Type` | `string` |
+| `Holdings.CurrencySymbol` | `string` |
+| `Holdings.AveragePrice` | `number` |
+| `Holdings.Quantity` | `number` |
+| `Holdings.MarketPrice` | `number` |
+| `Holdings.ConversionRate` | `number` |
+| `Holdings.MarketValue` | `number` |
+| `Holdings.UnrealizedPnl` | `number` |
+| `Cash` | `Object` |
+| `Cash._accountCurrency` | `string` |
+| `Cash._currencies` | `Object` |
+| `Cash._currencies._conversionRate` | `number` |
+| `Cash._currencies._isBaseCurrency` | ``true`` |
+| `Cash._currencies._invertRealTimePrice` | ``true`` |
+| `Cash._currencies.Symbol` | `string` |
+| `Cash._currencies.Amount` | `number` |
+| `Cash._currencies.CurrencySymbol` | `string` |
+| `Cash.TotalValueInAccountCurrency` | `number` |
+| `Cash.AccountCurrency` | `string` |
+| `AlphaRuntimeStatistics` | `Object` |
+| `AlphaRuntimeStatistics.MeanPopulationScore` | `Object` |
+| `AlphaRuntimeStatistics.MeanPopulationScore.UpdatedTimeUtc` | `string` |
+| `AlphaRuntimeStatistics.MeanPopulationScore.Direction` | `number` |
+| `AlphaRuntimeStatistics.MeanPopulationScore.Magnitude` | `number` |
+| `AlphaRuntimeStatistics.MeanPopulationScore.IsFinalScore` | ``true`` |
+| `AlphaRuntimeStatistics.RollingAveragedPopulationScore` | `Object` |
+| `AlphaRuntimeStatistics.RollingAveragedPopulationScore.UpdatedTimeUtc` | `string` |
+| `AlphaRuntimeStatistics.RollingAveragedPopulationScore.Direction` | `number` |
+| `AlphaRuntimeStatistics.RollingAveragedPopulationScore.Magnitude` | `number` |
+| `AlphaRuntimeStatistics.RollingAveragedPopulationScore.IsFinalScore` | ``true`` |
+| `AlphaRuntimeStatistics.LongCount` | `string` |
+| `AlphaRuntimeStatistics.ShortCount` | `string` |
+| `AlphaRuntimeStatistics.LongShortRatio` | `number` |
+| `AlphaRuntimeStatistics.TotalAccumulatedEstimatedAlphaValue` | `number` |
+| `AlphaRuntimeStatistics.KellyCriterionEstimate` | `number` |
+| `AlphaRuntimeStatistics.KellyCriterionProbabilityValue` | `number` |
+| `AlphaRuntimeStatistics.FitnessScore` | `number` |
+| `AlphaRuntimeStatistics.PortfolioTurnover` | `number` |
+| `AlphaRuntimeStatistics.ReturnOverMaxDrawdown` | `number` |
+| `AlphaRuntimeStatistics.SortinoRatio` | `number` |
+| `AlphaRuntimeStatistics.EstimatedMonthlyAlphaValue` | `number` |
+| `AlphaRuntimeStatistics.TotalInsightsGenerated` | `string` |
+| `AlphaRuntimeStatistics.TotalInsightsClosed` | `string` |
+| `AlphaRuntimeStatistics.TotalInsightsAnalysisCompleted` | `string` |
+| `AlphaRuntimeStatistics.MeanPopulationEstimatedInsightValue` | `number` |
+| `Charts` | `Object` |
+| `Charts.Name` | `string` |
+| `Charts.ChartType` | `string` |
+| `Charts.Series` | `Object` |
+| `Charts.Series.Name` | `string` |
+| `Charts.Series.Unit` | `string` |
+| `Charts.Series.Index` | `number` |
+| `Charts.Series.Values` | [{ `x`: `string` ; `y`: `number`  }] |
+| `Charts.Series.SeriesType` | `string` |
+| `Charts.Series.Color` | `string` |
+| `Charts.Series.ScatterMarkerSymbol` | `string` |
+| `Orders` | `Object` |
+| `Orders.Id` | `number` |
+| `Orders.ContingentId` | `number` |
+| `Orders.BrokerId` | [`string`] |
+| `Orders.Symbol` | `Object` |
+| `Orders.Symbol.Value` | `string` |
+| `Orders.Symbol.ID` | `string` |
+| `Orders.Symbol.Permtick` | `string` |
+| `Orders.Price` | `number` |
+| `Orders.PriceCurrency` | `string` |
+| `Orders.Time` | `string` |
+| `Orders.CreatedTime` | `string` |
+| `Orders.LastFillTime` | `string` |
+| `Orders.LastUpdateTime` | `string` |
+| `Orders.CanceledTime` | `string` |
+| `Orders.Quantity` | `number` |
+| `Orders.Type` | `string` |
+| `Orders.Status` | `string` |
+| `Orders.Tag` | `string` |
+| `Orders.SecurityType` | `string` |
+| `Orders.Direction` | `string` |
+| `Orders.Value` | `number` |
+| `Orders.OrderSubmissionData` | `Object` |
+| `Orders.OrderSubmissionData.BidPrice` | `number` |
+| `Orders.OrderSubmissionData.AskPrice` | `number` |
+| `Orders.OrderSubmissionData.LastPrice` | `number` |
+| `Orders.IsMarketable` | ``true`` |
+| `OrderEvents` | [`OrderEvent`](modules.md#orderevent)[] |
+| `ProfitLoss` | `number` |
+| `Statistics` | `string` |
+| `RuntimeStatistics` | `string` |
+| `ServerStatistics` | `string` |
+
+#### Defined in
+
+[types/live.ts:118](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L118)
+
+___
+
+### LiveAlgoDescription
+
+Ƭ **LiveAlgoDescription**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `projectId` | `number` |
+| `deployId` | `string` |
+| `status` | [`LiveAlgoStatus`](modules.md#livealgostatus) |
+| `launched` | `string` |
+| `stopped` | ``null`` |
+| `brokerage` | `string` |
+| `subscription` | `string` |
+| `error?` | `string` |
+
+#### Defined in
+
+[types/live.ts:231](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L231)
+
+___
+
+### QuantConnectLiveListResponse
+
+Ƭ **QuantConnectLiveListResponse**: [`QuantConnectResponse`](modules.md#quantconnectresponse) & { `live`: [`LiveAlgoDescription`](modules.md#livealgodescription)[]  }
+
+#### Defined in
+
+[types/live.ts:242](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L242)
 
 ___
 
 ### QuantConnectLiveResponse
 
-Ƭ **QuantConnectLiveResponse**: [`QuantConnectResponse`](modules.md#quantconnectresponse) & { `live`: `any`[]  }
+Ƭ **QuantConnectLiveResponse**: [`QuantConnectResponse`](modules.md#quantconnectresponse) & { `LiveResults`: { `version`: `number` ; `resolution`: ``"second"`` \| ``"10minutes"`` \| ``"minute"`` ; `results`: [`LiveResultsData`](modules.md#liveresultsdata)  }  }
 
 #### Defined in
 
-[types/live.ts:72](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L72)
+[types/live.ts:246](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L246)
 
 ___
 
@@ -567,7 +775,7 @@ ___
 
 #### Defined in
 
-[types/live.ts:76](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L76)
+[types/live.ts:254](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L254)
 
 ___
 
@@ -577,17 +785,17 @@ ___
 
 #### Defined in
 
-[types/live.ts:80](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L80)
+[types/live.ts:258](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L258)
 
 ___
 
 ### ReadLive
 
-Ƭ **ReadLive**: (`params`: [`ReadLiveParams`](modules.md#readliveparams)) => `Promise`<[`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse)\>
+Ƭ **ReadLive**: <T\>(`params`: `T`) => `Promise`<`T` extends [`ReadLiveAlgoParams`](modules.md#readlivealgoparams) ? [`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse) : [`QuantConnectLiveListResponse`](modules.md#quantconnectlivelistresponse)\>
 
 #### Type declaration
 
-▸ (`params`): `Promise`<[`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse)\>
+▸ <`T`\>(`params`): `Promise`<`T` extends [`ReadLiveAlgoParams`](modules.md#readlivealgoparams) ? [`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse) : [`QuantConnectLiveListResponse`](modules.md#quantconnectlivelistresponse)\>
 
 **`description`** [Get live algorithm(s) data](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/read-live-algorithm/get-live-algorithm-statistics)
 
@@ -602,19 +810,25 @@ const liveAlgorithmData = await live.read({ projectId: 2134213, deployId: 'deplo
 const allRunningAlgorithms = await live.read({ "status": "Running" })
 ```
 
+##### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`ReadLiveListParams`](modules.md#readlivelistparams) \| [`ReadLiveAlgoParams`](modules.md#readlivealgoparams) |
+
 ##### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `params` | [`ReadLiveParams`](modules.md#readliveparams) |
+| `params` | `T` |
 
 ##### Returns
 
-`Promise`<[`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse)\>
+`Promise`<`T` extends [`ReadLiveAlgoParams`](modules.md#readlivealgoparams) ? [`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse) : [`QuantConnectLiveListResponse`](modules.md#quantconnectlivelistresponse)\>
 
 #### Defined in
 
-[types/live.ts:105](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L105)
+[types/live.ts:283](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L283)
 
 ___
 
@@ -651,7 +865,7 @@ const {LiveLogs} = await live.log({ "format": "json",
 
 #### Defined in
 
-[types/live.ts:123](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L123)
+[types/live.ts:305](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L305)
 
 ___
 
@@ -684,7 +898,7 @@ const {success, ...algorithmData} = await live.create({ projectId: 2134213, depl
 
 #### Defined in
 
-[types/live.ts:138](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L138)
+[types/live.ts:320](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L320)
 
 ___
 
@@ -717,7 +931,7 @@ const {success} = await live.liquidate({ projectId: 2134213 });
 
 #### Defined in
 
-[types/live.ts:152](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L152)
+[types/live.ts:334](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L334)
 
 ___
 
@@ -750,7 +964,7 @@ const {success} = await live.stop({ projectId: 2134213 });
 
 #### Defined in
 
-[types/live.ts:166](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/live.ts#L166)
+[types/live.ts:348](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/live.ts#L348)
 
 ___
 
@@ -760,7 +974,7 @@ ___
 
 #### Defined in
 
-[types/projects.ts:3](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/projects.ts#L3)
+[types/projects.ts:3](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/projects.ts#L3)
 
 ___
 
@@ -780,7 +994,7 @@ ___
 
 #### Defined in
 
-[types/projects.ts:5](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/projects.ts#L5)
+[types/projects.ts:5](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/projects.ts#L5)
 
 ___
 
@@ -796,7 +1010,7 @@ ___
 
 #### Defined in
 
-[types/projects.ts:13](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/projects.ts#L13)
+[types/projects.ts:13](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/projects.ts#L13)
 
 ___
 
@@ -813,7 +1027,7 @@ ___
 
 #### Defined in
 
-[types/projects.ts:17](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/projects.ts#L17)
+[types/projects.ts:17](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/projects.ts#L17)
 
 ___
 
@@ -823,7 +1037,7 @@ ___
 
 #### Defined in
 
-[types/projects.ts:22](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/projects.ts#L22)
+[types/projects.ts:22](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/projects.ts#L22)
 
 ___
 
@@ -833,7 +1047,7 @@ ___
 
 #### Defined in
 
-[types/projects.ts:27](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/projects.ts#L27)
+[types/projects.ts:27](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/projects.ts#L27)
 
 ___
 
@@ -867,7 +1081,7 @@ const specificProject = await projects.read({ projectId: 2134213 });
 
 #### Defined in
 
-[types/projects.ts:42](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/projects.ts#L42)
+[types/projects.ts:42](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/projects.ts#L42)
 
 ___
 
@@ -903,7 +1117,7 @@ const {success} = await projects.create({
 
 #### Defined in
 
-[types/projects.ts:59](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/projects.ts#L59)
+[types/projects.ts:59](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/projects.ts#L59)
 
 ___
 
@@ -940,7 +1154,7 @@ const {projects} = quantconnect({userId, token})
 
 #### Defined in
 
-[types/projects.ts:77](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/projects.ts#L77)
+[types/projects.ts:77](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/projects.ts#L77)
 
 ___
 
@@ -973,4 +1187,4 @@ const {success} = await projects.delete({ projectId: 2134213 });
 
 #### Defined in
 
-[types/projects.ts:91](https://github.com/NitayRabi/quantconnect-client/blob/4139955/src/types/projects.ts#L91)
+[types/projects.ts:91](https://github.com/NitayRabi/quantconnect-client/blob/5554fd9/src/types/projects.ts#L91)
