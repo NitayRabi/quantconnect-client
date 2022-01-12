@@ -55,9 +55,26 @@ export type CreateLiveParams = ReadProjectParams & {
 };
 
 export type ReadLiveParams = ReadLiveListParams | ReadLiveAlgoParams;
+export type ReadLiveLogParams = ReadProjectParams & {
+  format: string;
+  algorithmId: string;
+  /**
+   * No logs will be returned before this unixtime
+   */
+  start: number;
+  /**
+   * No logs will be returned after this unixtime.
+
+   */
+  end: number;
+};
 
 export type QuantConnectLiveResponse = QuantConnectResponse & {
   live: Array<any>;
+};
+
+export type QuantConnectLiveLogsResponse = QuantConnectResponse & {
+  LiveLogs: Array<string>;
 };
 
 export type QuantConnectCreateLiveResponse = QuantConnectResponse & {
@@ -88,6 +105,24 @@ export type QuantConnectCreateLiveResponse = QuantConnectResponse & {
 export type ReadLive = (
   params: ReadLiveParams
 ) => Promise<QuantConnectLiveResponse>;
+
+/**
+ *
+ * @description [Get live algorithm log](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/read-live-algorithm/read-live-algorithm-log)
+ * @example
+ * ```typescript
+ * const {live} = quantconnect({userId, token})
+ *
+ * const {LiveLogs} = await live.log({ "format": "json",
+ *   "projectId": 0,
+ *   "algorithmId": "string",
+ *   "start": 0,
+ *   "end": 0});
+ * ```
+ */
+export type ReadLiveLog = (
+  params: ReadLiveLogParams
+) => Promise<QuantConnectLiveLogsResponse>;
 
 /**
  *

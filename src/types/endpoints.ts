@@ -7,6 +7,7 @@ import {
 } from "./projects";
 import { ReadLive, CreateLive, LiquidateLive, StopLive } from "./live";
 import { CreateFile, ReadFiles, UpdateFile, DeleteFile } from "./files";
+import { ReadLiveLog } from ".";
 
 /**
  * @hidden
@@ -22,6 +23,7 @@ export type EndpointToMethod = {
   "files/update": UpdateFile;
   "files/delete": DeleteFile;
   "live/read": ReadLive;
+  "live/read/logs": ReadLiveLog;
   "live/create": CreateLive;
   "live/update/liquidate": LiquidateLive;
   "live/update/stop": StopLive;
@@ -38,6 +40,7 @@ export type QuantConnectClient = {
     create: CreateLive;
     stop: StopLive;
     liquidate: LiquidateLive;
+    logs: ReadLiveLog;
   };
   files: {
     create: CreateFile;

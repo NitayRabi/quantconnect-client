@@ -71,6 +71,16 @@ describe("Endpoints", () => {
       },
       apiMethod: live.read,
     },
+    "live/read/logs": {
+      exampleParams: {
+        format: "json",
+        projectId: 0,
+        algorithmId: "string",
+        start: 0,
+        end: 0,
+      },
+      apiMethod: live.logs,
+    },
     "live/create": {
       exampleParams: {
         baseLiveAlgorithmSettings: {
