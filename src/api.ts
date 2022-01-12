@@ -1,5 +1,5 @@
 import axios from "axios";
-import { EndpointToInterface, EndpointMethod } from "./types";
+import { EndpointToMethod, QuantConnectClient } from "./types";
 import { createInternalError, sha256 } from "./utils";
 
 export const BASE_URL = "https://www.quantconnect.com/api";
@@ -16,9 +16,32 @@ const defaultConfig = {
   version: "v2",
 };
 
-type CreateAPIMethod = <T extends keyof EndpointToInterface>(
-  endpoint: T
-) => EndpointMethod<EndpointToInterface[T]>;
+/**
+ * @hidden
+ */
+export type CreateAPIMethod = <Key extends keyof EndpointToMethod>(
+  endpoint: Key
+) => EndpointToMethod[Key];
+
+const getCreateApiMethod: (config: QuantConnectConfig) => CreateAPIMethod =
+  ({ token, version, userId }) =>
+  (endpoint) =>
+  async (params?: any) => {
+    const timestamp = new Date().getTime();
+    const hash = await sha256(`${token}:${timestamp}`);
+    try {
+      const { data } = await axios(endpoint, {
+        baseURL: `${BASE_URL}/${version}`,
+        headers: { Timestamp: timestamp.toString() },
+        auth: { username: userId, password: hash },
+        params,
+      });
+      return data;
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : `${e}`;
+      throw createInternalError(msg);
+    }
+  };
 
 /**
  *
@@ -30,9 +53,10 @@ type CreateAPIMethod = <T extends keyof EndpointToInterface>(
  * const client = quantconnect({userId, token});
  * ```
  *
- * @return {{authenticate}}
+ * @returns
+ *
  */
-const quantconnect = (config: QuantConnectConfig) => {
+const quantconnect = (config: QuantConnectConfig): QuantConnectClient => {
   const { userId, token, version } = { ...defaultConfig, ...config };
   if (!userId || !token) {
     throw createInternalError(`userId and token are required parameters!`);
@@ -44,26 +68,10 @@ const quantconnect = (config: QuantConnectConfig) => {
     );
   }
 
-  const createApiMethod: CreateAPIMethod =
-    (endpoint) => async (params: any) => {
-      const timestamp = new Date().getTime();
-      const hash = await sha256(`${token}:${timestamp}`);
-      try {
-        const { data } = await axios(endpoint, {
-          baseURL: `${BASE_URL}/${version}`,
-          headers: { Timestamp: timestamp.toString() },
-          auth: { username: userId, password: hash },
-          params,
-        });
-        return data;
-      } catch (e) {
-        const msg = e instanceof Error ? e.message : `${e}`;
-        throw createInternalError(msg);
-      }
-    };
+  const createApiMethod = getCreateApiMethod(config);
 
   return {
-    authenticate: createApiMethod("authenticate"),
+    authenticate: createApiMethod<"authenticate">("authenticate"),
     live: {
       read: createApiMethod("live/read"),
       create: createApiMethod("live/create"),

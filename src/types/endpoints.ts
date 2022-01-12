@@ -1,86 +1,54 @@
+import { Authenticate } from "./core";
 import {
-  CreateProjectParams,
-  ReadProjectParams,
-  UpdateProjectParams,
-  QuantConnectProjectsResponse,
+  CreateProject,
+  ReadProject,
+  UpdateProject,
+  DeleteProject,
 } from "./projects";
-import { QuantConnectResponse } from "./core";
-import {
-  QuantConnectLiveResponse,
-  ReadLiveParams,
-  CreateLiveParams,
-} from "./live";
-import {
-  CreateFileParams,
-  ReadFileParams,
-  UpdateFileParams,
-  DeleteFileParams,
-} from "./files";
-import { QuantConnectCreateLiveResponse } from ".";
+import { ReadLive, CreateLive, LiquidateLive, StopLive } from "./live";
+import { CreateFile, ReadFiles, UpdateFile, DeleteFile } from "./files";
 
-export type EndpointMethod<T extends EndpointDescription<any, any, any>> =
-  T["paramsRequired"] extends true
-    ? (params: T["params"]) => Promise<T["response"]>
-    : (params?: T["params"]) => Promise<T["response"]>;
-
-export type EndpointDescription<
-  Params,
-  Response,
-  ParamsRequired extends boolean
-> = {
-  params: Params;
-  response: Response;
-  paramsRequired: ParamsRequired;
+/**
+ * @hidden
+ */
+export type EndpointToMethod = {
+  authenticate: Authenticate;
+  "projects/create": CreateProject;
+  "projects/read": ReadProject;
+  "projects/update": UpdateProject;
+  "projects/delete": DeleteProject;
+  "files/create": CreateFile;
+  "files/read": ReadFiles;
+  "files/update": UpdateFile;
+  "files/delete": DeleteFile;
+  "live/read": ReadLive;
+  "live/create": CreateLive;
+  "live/update/liquidate": LiquidateLive;
+  "live/update/stop": StopLive;
 };
 
-export type EndpointToInterface = {
-  authenticate: EndpointDescription<never, QuantConnectResponse, false>;
-  "projects/create": EndpointDescription<
-    CreateProjectParams,
-    QuantConnectProjectsResponse,
-    true
-  >;
-  "projects/read": EndpointDescription<
-    ReadProjectParams,
-    QuantConnectProjectsResponse,
-    false
-  >;
-  "projects/update": EndpointDescription<
-    UpdateProjectParams,
-    QuantConnectProjectsResponse,
-    true
-  >;
-  "projects/delete": EndpointDescription<ReadProjectParams, never, true>;
-  "files/create": EndpointDescription<
-    CreateFileParams,
-    QuantConnectProjectsResponse,
-    true
-  >;
-  "files/read": EndpointDescription<ReadFileParams, never, false>;
-  "files/update": EndpointDescription<UpdateFileParams, never, true>;
-  "files/delete": EndpointDescription<
-    DeleteFileParams,
-    QuantConnectProjectsResponse,
-    true
-  >;
-  "live/read": EndpointDescription<
-    ReadLiveParams,
-    QuantConnectLiveResponse,
-    true
-  >;
-  "live/create": EndpointDescription<
-    CreateLiveParams,
-    QuantConnectCreateLiveResponse,
-    true
-  >;
-  "live/update/liquidate": EndpointDescription<
-    ReadProjectParams,
-    QuantConnectResponse,
-    true
-  >;
-  "live/update/stop": EndpointDescription<
-    ReadProjectParams,
-    QuantConnectResponse,
-    true
-  >;
+export type Method<Return, Params = undefined> = Params extends undefined
+  ? (params?: Params) => Promise<Return>
+  : (params: Params) => Promise<Return>;
+
+export type QuantConnectClient = {
+  authenticate: Authenticate;
+  live: {
+    read: ReadLive;
+    create: CreateLive;
+    stop: StopLive;
+    liquidate: LiquidateLive;
+  };
+  files: {
+    create: CreateFile;
+    read: ReadFiles;
+    update: UpdateFile;
+    delete: DeleteFile;
+  };
+  projects: {
+    create: CreateProject;
+    read: ReadProject;
+    update: UpdateProject;
+    delete: DeleteProject;
+  };
 };
