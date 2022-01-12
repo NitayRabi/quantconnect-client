@@ -69,8 +69,186 @@ export type ReadLiveLogParams = ReadProjectParams & {
   end: number;
 };
 
+export type OrderEvent = {
+  OrderId: number;
+  Id: number;
+  Symbol: {
+    Value: string;
+    ID: string;
+    Permtick: string;
+  };
+  UtcTime: string;
+  Status: {
+    OrderId: number;
+    Id: number;
+    Symbol: {
+      Value: string;
+      ID: string;
+      Permtick: string;
+    };
+    UtcTime: string;
+    Status: string;
+    FillPrice: number;
+    FillPriceCurrency: string;
+    FillQuantity: number;
+    Direction: string;
+    Message: string;
+    IsAssignment: true;
+    StopPrice: number;
+    LimitPrice: number;
+    Quantity: number;
+  };
+  OrderFee: {
+    Value: {
+      Amount: number;
+      Currency: string;
+    };
+  };
+  FillPrice: number;
+  FillPriceCurrency: string;
+  FillQuantity: number;
+  Direction: string;
+  Message: string;
+  IsAssignment: true;
+  StopPrice: number;
+  LimitPrice: number;
+  Quantity: number;
+};
+
+export type LiveResultsData = {
+  Holdings: {
+    Symbol: {
+      Value: string;
+      ID: string;
+      Permtick: string;
+    };
+    Type: string;
+    CurrencySymbol: string;
+    AveragePrice: number;
+    Quantity: number;
+    MarketPrice: number;
+    ConversionRate: number;
+    MarketValue: number;
+    UnrealizedPnl: number;
+  };
+  Cash: {
+    _accountCurrency: string;
+    _currencies: {
+      _conversionRate: number;
+      _isBaseCurrency: true;
+      _invertRealTimePrice: true;
+      Symbol: string;
+      Amount: number;
+      CurrencySymbol: string;
+    };
+    TotalValueInAccountCurrency: number;
+    AccountCurrency: string;
+  };
+  AlphaRuntimeStatistics: {
+    MeanPopulationScore: {
+      UpdatedTimeUtc: string;
+      Direction: number;
+      Magnitude: number;
+      IsFinalScore: true;
+    };
+    RollingAveragedPopulationScore: {
+      UpdatedTimeUtc: string;
+      Direction: number;
+      Magnitude: number;
+      IsFinalScore: true;
+    };
+    LongCount: string;
+    ShortCount: string;
+    LongShortRatio: number;
+    TotalAccumulatedEstimatedAlphaValue: number;
+    KellyCriterionEstimate: number;
+    KellyCriterionProbabilityValue: number;
+    FitnessScore: number;
+    PortfolioTurnover: number;
+    ReturnOverMaxDrawdown: number;
+    SortinoRatio: number;
+    EstimatedMonthlyAlphaValue: number;
+    TotalInsightsGenerated: string;
+    TotalInsightsClosed: string;
+    TotalInsightsAnalysisCompleted: string;
+    MeanPopulationEstimatedInsightValue: number;
+  };
+  Charts: {
+    Name: string;
+    ChartType: string;
+    Series: {
+      Name: string;
+      Unit: string;
+      Index: number;
+      Values: [
+        {
+          x: string;
+          y: number;
+        }
+      ];
+      SeriesType: string;
+      Color: string;
+      ScatterMarkerSymbol: string;
+    };
+  };
+  Orders: {
+    Id: number;
+    ContingentId: number;
+    BrokerId: [string];
+    Symbol: {
+      Value: string;
+      ID: string;
+      Permtick: string;
+    };
+    Price: number;
+    PriceCurrency: string;
+    Time: string;
+    CreatedTime: string;
+    LastFillTime: string;
+    LastUpdateTime: string;
+    CanceledTime: string;
+    Quantity: number;
+    Type: string;
+    Status: string;
+    Tag: string;
+    SecurityType: string;
+    Direction: string;
+    Value: number;
+    OrderSubmissionData: {
+      BidPrice: number;
+      AskPrice: number;
+      LastPrice: number;
+    };
+    IsMarketable: true;
+  };
+  OrderEvents: Array<OrderEvent>;
+  ProfitLoss: number;
+  Statistics: string;
+  RuntimeStatistics: string;
+  ServerStatistics: string;
+};
+
+export type LiveAlgoDescription = {
+  projectId: number;
+  deployId: string;
+  status: LiveAlgoStatus;
+  launched: string;
+  stopped: null;
+  brokerage: string;
+  subscription: string;
+  error?: string;
+};
+
+export type QuantConnectLiveListResponse = QuantConnectResponse & {
+  live: Array<LiveAlgoDescription>;
+};
+
 export type QuantConnectLiveResponse = QuantConnectResponse & {
-  live: Array<any>;
+  LiveResults: {
+    version: number;
+    resolution: "second" | "10minutes" | "minute";
+    results: LiveResultsData;
+  };
 };
 
 export type QuantConnectLiveLogsResponse = QuantConnectResponse & {
@@ -102,9 +280,13 @@ export type QuantConnectCreateLiveResponse = QuantConnectResponse & {
  * const allRunningAlgorithms = await live.read({ "status": "Running" })
  * ```
  */
-export type ReadLive = (
-  params: ReadLiveParams
-) => Promise<QuantConnectLiveResponse>;
+export type ReadLive = <T extends ReadLiveListParams | ReadLiveAlgoParams>(
+  params: T
+) => Promise<
+  T extends ReadLiveAlgoParams
+    ? QuantConnectLiveResponse
+    : QuantConnectLiveListResponse
+>;
 
 /**
  *
