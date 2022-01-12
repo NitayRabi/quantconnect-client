@@ -70,3 +70,64 @@ export type QuantConnectCreateLiveResponse = QuantConnectResponse & {
   subscription: string;
   error?: string;
 };
+
+/**
+ *
+ * @description [Get live algorithm(s) data](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/read-live-algorithm/get-live-algorithm-statistics)
+ * @example
+ * ```typescript
+ * const {live} = quantconnect({userId, token})
+ *
+ * // Single algorithm reading
+ * const liveAlgorithmData = await live.read({ projectId: 2134213, deployId: 'deploy-id-string' });
+ *
+ * // List of running algorithms
+ * const allRunningAlgorithms = await live.read({ "status": "Running" })
+ * ```
+ */
+export type ReadLive = (
+  params: ReadLiveParams
+) => Promise<QuantConnectLiveResponse>;
+
+/**
+ *
+ * @description [Create a live algorithm](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/create-live-algorithm)
+ * @example
+ * ```typescript
+ * const {live} = quantconnect({userId, token})
+ *
+ *
+ * const {success, ...algorithmData} = await live.create({ projectId: 2134213, deployId: 'deploy-id-string' });
+ * ```
+ */
+export type CreateLive = (
+  params: CreateLiveParams
+) => Promise<QuantConnectCreateLiveResponse>;
+
+/**
+ *
+ * @description [Liquidate a live algorithm](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/update-live-algorithm/liquidate-live-portfolio)
+ * @example
+ * ```typescript
+ * const {live} = quantconnect({userId, token})
+ *
+ * const {success} = await live.liquidate({ projectId: 2134213 });
+ * ```
+ */
+export type LiquidateLive = (
+  params: ReadProjectParams
+) => Promise<QuantConnectResponse>;
+
+/**
+ *
+ * @description [Stop a live algorithm](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/update-live-algorithm/stop-live-algorithm)
+ * @example
+ * ```typescript
+ * const {live} = quantconnect({userId, token})
+ *
+ * const {success} = await live.stop({ projectId: 2134213 });
+ * ```
+ */
+export type StopLive = (
+  params: ReadProjectParams
+) => Promise<QuantConnectResponse>;

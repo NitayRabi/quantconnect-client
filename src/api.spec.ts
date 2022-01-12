@@ -1,20 +1,21 @@
 import nock from "nock";
-import quantconnect, {
-  EndpointDescription,
-  EndpointToInterface,
-  EndpointMethod,
-} from ".";
+import quantconnect, { EndpointToMethod } from ".";
 import { BASE_URL } from "./api";
 
-type EndpointTestDescription<D extends EndpointDescription<any, any, any>> =
-  D["paramsRequired"] extends true
-    ? { exampleParams: D["params"]; apiMethod: EndpointMethod<D> }
-    : { exampleParams?: D["params"]; apiMethod: EndpointMethod<D> };
+type EndpointTestDescription<Key extends keyof EndpointToMethod> = Parameters<
+  EndpointToMethod[Key]
+>[0] extends undefined
+  ? {
+      exampleParams?: Parameters<EndpointToMethod[Key]>[0];
+      apiMethod: EndpointToMethod[Key];
+    }
+  : {
+      exampleParams: Parameters<EndpointToMethod[Key]>[0];
+      apiMethod: EndpointToMethod[Key];
+    };
 
 type EndpointsTestDescription = {
-  [Key in keyof EndpointToInterface]: EndpointTestDescription<
-    EndpointToInterface[Key]
-  >;
+  [Key in keyof EndpointToMethod]: EndpointTestDescription<Key>;
 };
 
 describe("Endpoints", () => {
@@ -102,6 +103,9 @@ describe("Endpoints", () => {
       apiMethod: projects.create,
     },
     "projects/read": {
+      exampleParams: {
+        projectId: 1551232,
+      },
       apiMethod: projects.read,
     },
     "projects/update": {

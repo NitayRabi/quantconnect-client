@@ -4,347 +4,52 @@
 
 ## Table of contents
 
+### Functions
+
+- [quantconnect](modules.md#quantconnect)
+
 ### References
 
 - [default](modules.md#default)
 
 ### Type aliases
 
-- [BaseLiveAlgorithmSettings](modules.md#baselivealgorithmsettings)
-- [BrokerageEnvironment](modules.md#brokerageenvironment)
-- [BrokerageType](modules.md#brokeragetype)
-- [CreateLiveParams](modules.md#createliveparams)
-- [CreateProjectParams](modules.md#createprojectparams)
-- [EndpointDescription](modules.md#endpointdescription)
-- [EndpointMethod](modules.md#endpointmethod)
-- [EndpointToInterface](modules.md#endpointtointerface)
-- [LiveAlgoStatus](modules.md#livealgostatus)
-- [PaginationParams](modules.md#paginationparams)
-- [QuantConnectCreateLiveResponse](modules.md#quantconnectcreateliveresponse)
-- [QuantConnectLiveResponse](modules.md#quantconnectliveresponse)
-- [QuantConnectOrder](modules.md#quantconnectorder)
-- [QuantConnectProject](modules.md#quantconnectproject)
-- [QuantConnectProjectsResponse](modules.md#quantconnectprojectsresponse)
 - [QuantConnectResponse](modules.md#quantconnectresponse)
-- [QuantConnectVersion](modules.md#quantconnectversion)
-- [ReadLiveAlgoParams](modules.md#readlivealgoparams)
+- [PaginationParams](modules.md#paginationparams)
+- [Authenticate](modules.md#authenticate)
+- [Method](modules.md#method)
+- [QuantConnectClient](modules.md#quantconnectclient)
+- [QuantConnectOrder](modules.md#quantconnectorder)
+- [LiveAlgoStatus](modules.md#livealgostatus)
+- [BrokerageType](modules.md#brokeragetype)
 - [ReadLiveListParams](modules.md#readlivelistparams)
+- [ReadLiveAlgoParams](modules.md#readlivealgoparams)
+- [BrokerageEnvironment](modules.md#brokerageenvironment)
+- [BaseLiveAlgorithmSettings](modules.md#baselivealgorithmsettings)
+- [CreateLiveParams](modules.md#createliveparams)
 - [ReadLiveParams](modules.md#readliveparams)
+- [QuantConnectLiveResponse](modules.md#quantconnectliveresponse)
+- [QuantConnectCreateLiveResponse](modules.md#quantconnectcreateliveresponse)
+- [ReadLive](modules.md#readlive)
+- [CreateLive](modules.md#createlive)
+- [LiquidateLive](modules.md#liquidatelive)
+- [StopLive](modules.md#stoplive)
+- [ProjectLanguage](modules.md#projectlanguage)
+- [ProjectModel](modules.md#projectmodel)
 - [ReadProjectParams](modules.md#readprojectparams)
+- [CreateProjectParams](modules.md#createprojectparams)
 - [UpdateProjectParams](modules.md#updateprojectparams)
-
-### Functions
-
-- [quantconnect](modules.md#quantconnect)
-
-## References
-
-### default
-
-Renames and re-exports [quantconnect](modules.md#quantconnect)
-
-## Type aliases
-
-### BaseLiveAlgorithmSettings
-
-Ƭ **BaseLiveAlgorithmSettings**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `account` | `string` |
-| `environment` | [`BrokerageEnvironment`](modules.md#brokerageenvironment) |
-| `id` | `string` |
-| `password` | `string` |
-| `user` | `string` |
-
-#### Defined in
-
-[types/live.ts:42](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L42)
-
-___
-
-### BrokerageEnvironment
-
-Ƭ **BrokerageEnvironment**: ``"live"`` \| ``"paper"``
-
-#### Defined in
-
-[types/live.ts:40](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L40)
-
-___
-
-### BrokerageType
-
-Ƭ **BrokerageType**: ``"Interactive"`` \| ``"FXCM"`` \| ``"Oanda"`` \| ``"Tradier"`` \| ``"PaperTrading"`` \| ``"Alpaca"`` \| ``"Bitfinex"`` \| ``"Binance"`` \| ``"GDAX"``
-
-#### Defined in
-
-[types/live.ts:20](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L20)
-
-___
-
-### CreateLiveParams
-
-Ƭ **CreateLiveParams**: [`ReadProjectParams`](modules.md#readprojectparams) & { `baseLiveAlgorithmSettings`: [`BaseLiveAlgorithmSettings`](modules.md#baselivealgorithmsettings) ; `compileId`: `string` ; `serverType`: `string` ; `versionId`: `string`  }
-
-#### Defined in
-
-[types/live.ts:50](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L50)
-
-___
-
-### CreateProjectParams
-
-Ƭ **CreateProjectParams**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `language` | ``"C#"`` \| ``"Py"`` |
-| `name` | `string` |
-
-#### Defined in
-
-[types/projects.ts:11](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/projects.ts#L11)
-
-___
-
-### EndpointDescription
-
-Ƭ **EndpointDescription**<`Params`, `Response`, `ParamsRequired`\>: `Object`
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `Params` | `Params` |
-| `Response` | `Response` |
-| `ParamsRequired` | extends `boolean` |
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `params` | `Params` |
-| `paramsRequired` | `ParamsRequired` |
-| `response` | `Response` |
-
-#### Defined in
-
-[types/endpoints.ts:26](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/endpoints.ts#L26)
-
-___
-
-### EndpointMethod
-
-Ƭ **EndpointMethod**<`T`\>: `T`[``"paramsRequired"``] extends ``true`` ? (`params`: `T`[``"params"``]) => `Promise`<`T`[``"response"``]\> : (`params?`: `T`[``"params"``]) => `Promise`<`T`[``"response"``]\>
-
-#### Type parameters
-
-| Name | Type |
-| :------ | :------ |
-| `T` | extends [`EndpointDescription`](modules.md#endpointdescription)<`any`, `any`, `any`\> |
-
-#### Defined in
-
-[types/endpoints.ts:21](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/endpoints.ts#L21)
-
-___
-
-### EndpointToInterface
-
-Ƭ **EndpointToInterface**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `authenticate` | [`EndpointDescription`](modules.md#endpointdescription)<`never`, [`QuantConnectResponse`](modules.md#quantconnectresponse), ``false``\> |
-| `files/create` | [`EndpointDescription`](modules.md#endpointdescription)<`CreateFileParams`, [`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse), ``true``\> |
-| `files/delete` | [`EndpointDescription`](modules.md#endpointdescription)<`DeleteFileParams`, [`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse), ``true``\> |
-| `files/read` | [`EndpointDescription`](modules.md#endpointdescription)<`ReadFileParams`, `never`, ``false``\> |
-| `files/update` | [`EndpointDescription`](modules.md#endpointdescription)<`UpdateFileParams`, `never`, ``true``\> |
-| `live/create` | [`EndpointDescription`](modules.md#endpointdescription)<[`CreateLiveParams`](modules.md#createliveparams), [`QuantConnectCreateLiveResponse`](modules.md#quantconnectcreateliveresponse), ``true``\> |
-| `live/read` | [`EndpointDescription`](modules.md#endpointdescription)<[`ReadLiveParams`](modules.md#readliveparams), [`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse), ``true``\> |
-| `live/update/liquidate` | [`EndpointDescription`](modules.md#endpointdescription)<[`ReadProjectParams`](modules.md#readprojectparams), [`QuantConnectResponse`](modules.md#quantconnectresponse), ``true``\> |
-| `live/update/stop` | [`EndpointDescription`](modules.md#endpointdescription)<[`ReadProjectParams`](modules.md#readprojectparams), [`QuantConnectResponse`](modules.md#quantconnectresponse), ``true``\> |
-| `projects/create` | [`EndpointDescription`](modules.md#endpointdescription)<[`CreateProjectParams`](modules.md#createprojectparams), [`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse), ``true``\> |
-| `projects/delete` | [`EndpointDescription`](modules.md#endpointdescription)<[`ReadProjectParams`](modules.md#readprojectparams), `never`, ``true``\> |
-| `projects/read` | [`EndpointDescription`](modules.md#endpointdescription)<[`ReadProjectParams`](modules.md#readprojectparams), [`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse), ``false``\> |
-| `projects/update` | [`EndpointDescription`](modules.md#endpointdescription)<[`UpdateProjectParams`](modules.md#updateprojectparams), [`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse), ``true``\> |
-
-#### Defined in
-
-[types/endpoints.ts:36](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/endpoints.ts#L36)
-
-___
-
-### LiveAlgoStatus
-
-Ƭ **LiveAlgoStatus**: ``"DeployError"`` \| ``"InQueue"`` \| ``"Running"`` \| ``"Stopped"`` \| ``"Liquidated"`` \| ``"Deleted"`` \| ``"Completed"`` \| ``"RuntimeError"`` \| ``"Invalid"`` \| ``"LoggingIn"`` \| ``"Initializing"`` \| ``"History"``
-
-#### Defined in
-
-[types/live.ts:6](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L6)
-
-___
-
-### PaginationParams
-
-Ƭ **PaginationParams**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `end` | `string` |
-| `start` | `string` |
-
-#### Defined in
-
-[types/core.ts:6](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/core.ts#L6)
-
-___
-
-### QuantConnectCreateLiveResponse
-
-Ƭ **QuantConnectCreateLiveResponse**: [`QuantConnectResponse`](modules.md#quantconnectresponse) & { `brokerage`: [`BrokerageType`](modules.md#brokeragetype) ; `deployId`: `string` ; `error?`: `string` ; `launched`: `string` ; `projectId`: `number` ; `status`: [`LiveAlgoStatus`](modules.md#livealgostatus) ; `stopped`: `string` ; `subscription`: `string`  }
-
-#### Defined in
-
-[types/live.ts:63](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L63)
-
-___
-
-### QuantConnectLiveResponse
-
-Ƭ **QuantConnectLiveResponse**: [`QuantConnectResponse`](modules.md#quantconnectresponse) & { `live`: `any`[]  }
-
-#### Defined in
-
-[types/live.ts:59](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L59)
-
-___
-
-### QuantConnectOrder
-
-Ƭ **QuantConnectOrder**: `any`
-
-#### Defined in
-
-[types/live.ts:4](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L4)
-
-___
-
-### QuantConnectProject
-
-Ƭ **QuantConnectProject**: `any`
-
-#### Defined in
-
-[types/projects.ts:4](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/projects.ts#L4)
-
-___
-
-### QuantConnectProjectsResponse
-
-Ƭ **QuantConnectProjectsResponse**: [`QuantConnectResponse`](modules.md#quantconnectresponse) & { `projects`: [`QuantConnectProject`](modules.md#quantconnectproject)[] ; `versions`: [`QuantConnectVersion`](modules.md#quantconnectversion)[]  }
-
-#### Defined in
-
-[types/projects.ts:22](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/projects.ts#L22)
-
-___
-
-### QuantConnectResponse
-
-Ƭ **QuantConnectResponse**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `errors?` | `string`[] |
-| `success` | `boolean` |
-
-#### Defined in
-
-[types/core.ts:1](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/core.ts#L1)
-
-___
-
-### QuantConnectVersion
-
-Ƭ **QuantConnectVersion**: `any`
-
-#### Defined in
-
-[types/projects.ts:5](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/projects.ts#L5)
-
-___
-
-### ReadLiveAlgoParams
-
-Ƭ **ReadLiveAlgoParams**: [`ReadProjectParams`](modules.md#readprojectparams) & { `deployId`: `string` ; `subscription?`: `string`  }
-
-#### Defined in
-
-[types/live.ts:35](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L35)
-
-___
-
-### ReadLiveListParams
-
-Ƭ **ReadLiveListParams**: `Partial`<[`PaginationParams`](modules.md#paginationparams)\> & { `status`: [`LiveAlgoStatus`](modules.md#livealgostatus)  }
-
-#### Defined in
-
-[types/live.ts:31](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L31)
-
-___
-
-### ReadLiveParams
-
-Ƭ **ReadLiveParams**: [`ReadLiveListParams`](modules.md#readlivelistparams) \| [`ReadLiveAlgoParams`](modules.md#readlivealgoparams)
-
-#### Defined in
-
-[types/live.ts:57](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/live.ts#L57)
-
-___
-
-### ReadProjectParams
-
-Ƭ **ReadProjectParams**: `Object`
-
-#### Type declaration
-
-| Name | Type |
-| :------ | :------ |
-| `projectId` | `number` |
-
-#### Defined in
-
-[types/projects.ts:7](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/projects.ts#L7)
-
-___
-
-### UpdateProjectParams
-
-Ƭ **UpdateProjectParams**: [`ReadProjectParams`](modules.md#readprojectparams) & { `description`: `string` ; `name`: `string`  }
-
-#### Defined in
-
-[types/projects.ts:16](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/types/projects.ts#L16)
+- [QuantConnectProjectsResponse](modules.md#quantconnectprojectsresponse)
+- [ReadProject](modules.md#readproject)
+- [CreateProject](modules.md#createproject)
+- [UpdateProject](modules.md#updateproject)
+- [DeleteProject](modules.md#deleteproject)
 
 ## Functions
 
 ### quantconnect
 
-▸ `Const` **quantconnect**(`config`): `Object`
+▸ `Const` **quantconnect**(`config`): [`QuantConnectClient`](modules.md#quantconnectclient)
 
 **`example`**
 ```typescript
@@ -361,27 +66,602 @@ const client = quantconnect({userId, token});
 
 #### Returns
 
-`Object`
-
-| Name | Type |
-| :------ | :------ |
-| `authenticate` | (`params?`: `undefined`) => `Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\> |
-| `files` | `Object` |
-| `files.create` | (`params`: `CreateFileParams`) => `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\> |
-| `files.delete` | (`params`: `DeleteFileParams`) => `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\> |
-| `files.read` | (`params?`: `ReadFileParams`) => `Promise`<`never`\> |
-| `files.update` | (`params`: `UpdateFileParams`) => `Promise`<`never`\> |
-| `live` | `Object` |
-| `live.create` | (`params`: [`CreateLiveParams`](modules.md#createliveparams)) => `Promise`<[`QuantConnectCreateLiveResponse`](modules.md#quantconnectcreateliveresponse)\> |
-| `live.liquidate` | (`params`: [`ReadProjectParams`](modules.md#readprojectparams)) => `Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\> |
-| `live.read` | (`params`: [`ReadLiveParams`](modules.md#readliveparams)) => `Promise`<[`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse)\> |
-| `live.stop` | (`params`: [`ReadProjectParams`](modules.md#readprojectparams)) => `Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\> |
-| `projects` | `Object` |
-| `projects.create` | (`params`: [`CreateProjectParams`](modules.md#createprojectparams)) => `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\> |
-| `projects.delete` | (`params`: [`ReadProjectParams`](modules.md#readprojectparams)) => `Promise`<`never`\> |
-| `projects.read` | (`params?`: [`ReadProjectParams`](modules.md#readprojectparams)) => `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\> |
-| `projects.update` | (`params`: [`UpdateProjectParams`](modules.md#updateprojectparams)) => `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\> |
+[`QuantConnectClient`](modules.md#quantconnectclient)
 
 #### Defined in
 
-[api.ts:35](https://github.com/NitayRabi/quantconnect-client/blob/65a57d5/src/api.ts#L35)
+[api.ts:59](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/api.ts#L59)
+
+## References
+
+### default
+
+Renames and re-exports [quantconnect](modules.md#quantconnect)
+
+## Type aliases
+
+### QuantConnectResponse
+
+Ƭ **QuantConnectResponse**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `errors?` | `string`[] |
+| `success` | `boolean` |
+
+#### Defined in
+
+[types/core.ts:1](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/core.ts#L1)
+
+___
+
+### PaginationParams
+
+Ƭ **PaginationParams**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `start` | `string` |
+| `end` | `string` |
+
+#### Defined in
+
+[types/core.ts:6](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/core.ts#L6)
+
+___
+
+### Authenticate
+
+Ƭ **Authenticate**: () => `Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\>
+
+#### Type declaration
+
+▸ (): `Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\>
+
+**`description`** [Authenticate a userId and token](https://www.quantconnect.com/docs/v2/our-platform/api-reference/authentication)
+
+**`example`**
+```typescript
+const { authenticate } = quantconnect({userId, token});
+
+const { success } = await authenticate();
+```
+
+##### Returns
+
+`Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\>
+
+#### Defined in
+
+[types/core.ts:20](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/core.ts#L20)
+
+___
+
+### Method
+
+Ƭ **Method**<`Return`, `Params`\>: `Params` extends `undefined` ? (`params?`: `Params`) => `Promise`<`Return`\> : (`params`: `Params`) => `Promise`<`Return`\>
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `Return` | `Return` |
+| `Params` | `undefined` |
+
+#### Defined in
+
+[types/endpoints.ts:30](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/endpoints.ts#L30)
+
+___
+
+### QuantConnectClient
+
+Ƭ **QuantConnectClient**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `authenticate` | [`Authenticate`](modules.md#authenticate) |
+| `live` | `Object` |
+| `live.read` | [`ReadLive`](modules.md#readlive) |
+| `live.create` | [`CreateLive`](modules.md#createlive) |
+| `live.stop` | [`StopLive`](modules.md#stoplive) |
+| `live.liquidate` | [`LiquidateLive`](modules.md#liquidatelive) |
+| `files` | `Object` |
+| `files.create` | `CreateFile` |
+| `files.read` | `ReadFiles` |
+| `files.update` | `UpdateFile` |
+| `files.delete` | `DeleteFile` |
+| `projects` | `Object` |
+| `projects.create` | [`CreateProject`](modules.md#createproject) |
+| `projects.read` | [`ReadProject`](modules.md#readproject) |
+| `projects.update` | [`UpdateProject`](modules.md#updateproject) |
+| `projects.delete` | [`DeleteProject`](modules.md#deleteproject) |
+
+#### Defined in
+
+[types/endpoints.ts:34](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/endpoints.ts#L34)
+
+___
+
+### QuantConnectOrder
+
+Ƭ **QuantConnectOrder**: `any`
+
+#### Defined in
+
+[types/live.ts:4](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L4)
+
+___
+
+### LiveAlgoStatus
+
+Ƭ **LiveAlgoStatus**: ``"DeployError"`` \| ``"InQueue"`` \| ``"Running"`` \| ``"Stopped"`` \| ``"Liquidated"`` \| ``"Deleted"`` \| ``"Completed"`` \| ``"RuntimeError"`` \| ``"Invalid"`` \| ``"LoggingIn"`` \| ``"Initializing"`` \| ``"History"``
+
+#### Defined in
+
+[types/live.ts:6](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L6)
+
+___
+
+### BrokerageType
+
+Ƭ **BrokerageType**: ``"Interactive"`` \| ``"FXCM"`` \| ``"Oanda"`` \| ``"Tradier"`` \| ``"PaperTrading"`` \| ``"Alpaca"`` \| ``"Bitfinex"`` \| ``"Binance"`` \| ``"GDAX"``
+
+#### Defined in
+
+[types/live.ts:20](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L20)
+
+___
+
+### ReadLiveListParams
+
+Ƭ **ReadLiveListParams**: `Partial`<[`PaginationParams`](modules.md#paginationparams)\> & { `status`: [`LiveAlgoStatus`](modules.md#livealgostatus)  }
+
+#### Defined in
+
+[types/live.ts:31](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L31)
+
+___
+
+### ReadLiveAlgoParams
+
+Ƭ **ReadLiveAlgoParams**: [`ReadProjectParams`](modules.md#readprojectparams) & { `deployId`: `string` ; `subscription?`: `string`  }
+
+#### Defined in
+
+[types/live.ts:35](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L35)
+
+___
+
+### BrokerageEnvironment
+
+Ƭ **BrokerageEnvironment**: ``"live"`` \| ``"paper"``
+
+#### Defined in
+
+[types/live.ts:40](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L40)
+
+___
+
+### BaseLiveAlgorithmSettings
+
+Ƭ **BaseLiveAlgorithmSettings**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `id` | `string` |
+| `user` | `string` |
+| `environment` | [`BrokerageEnvironment`](modules.md#brokerageenvironment) |
+| `password` | `string` |
+| `account` | `string` |
+
+#### Defined in
+
+[types/live.ts:42](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L42)
+
+___
+
+### CreateLiveParams
+
+Ƭ **CreateLiveParams**: [`ReadProjectParams`](modules.md#readprojectparams) & { `compileId`: `string` ; `serverType`: `string` ; `versionId`: `string` ; `baseLiveAlgorithmSettings`: [`BaseLiveAlgorithmSettings`](modules.md#baselivealgorithmsettings)  }
+
+#### Defined in
+
+[types/live.ts:50](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L50)
+
+___
+
+### ReadLiveParams
+
+Ƭ **ReadLiveParams**: [`ReadLiveListParams`](modules.md#readlivelistparams) \| [`ReadLiveAlgoParams`](modules.md#readlivealgoparams)
+
+#### Defined in
+
+[types/live.ts:57](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L57)
+
+___
+
+### QuantConnectLiveResponse
+
+Ƭ **QuantConnectLiveResponse**: [`QuantConnectResponse`](modules.md#quantconnectresponse) & { `live`: `any`[]  }
+
+#### Defined in
+
+[types/live.ts:59](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L59)
+
+___
+
+### QuantConnectCreateLiveResponse
+
+Ƭ **QuantConnectCreateLiveResponse**: [`QuantConnectResponse`](modules.md#quantconnectresponse) & { `projectId`: `number` ; `deployId`: `string` ; `status`: [`LiveAlgoStatus`](modules.md#livealgostatus) ; `launched`: `string` ; `stopped`: `string` ; `brokerage`: [`BrokerageType`](modules.md#brokeragetype) ; `subscription`: `string` ; `error?`: `string`  }
+
+#### Defined in
+
+[types/live.ts:63](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L63)
+
+___
+
+### ReadLive
+
+Ƭ **ReadLive**: (`params`: [`ReadLiveParams`](modules.md#readliveparams)) => `Promise`<[`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse)\>
+
+#### Type declaration
+
+▸ (`params`): `Promise`<[`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse)\>
+
+**`description`** [Get live algorithm(s) data](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/read-live-algorithm/get-live-algorithm-statistics)
+
+**`example`**
+```typescript
+const {live} = quantconnect({userId, token})
+
+// Single algorithm reading
+const liveAlgorithmData = await live.read({ projectId: 2134213, deployId: 'deploy-id-string' });
+
+// List of running algorithms
+const allRunningAlgorithms = await live.read({ "status": "Running" })
+```
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`ReadLiveParams`](modules.md#readliveparams) |
+
+##### Returns
+
+`Promise`<[`QuantConnectLiveResponse`](modules.md#quantconnectliveresponse)\>
+
+#### Defined in
+
+[types/live.ts:88](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L88)
+
+___
+
+### CreateLive
+
+Ƭ **CreateLive**: (`params`: [`CreateLiveParams`](modules.md#createliveparams)) => `Promise`<[`QuantConnectCreateLiveResponse`](modules.md#quantconnectcreateliveresponse)\>
+
+#### Type declaration
+
+▸ (`params`): `Promise`<[`QuantConnectCreateLiveResponse`](modules.md#quantconnectcreateliveresponse)\>
+
+**`description`** [Create a live algorithm](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/create-live-algorithm)
+
+**`example`**
+```typescript
+const {live} = quantconnect({userId, token})
+
+const {success, ...algorithmData} = await live.create({ projectId: 2134213, deployId: 'deploy-id-string' });
+```
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`CreateLiveParams`](modules.md#createliveparams) |
+
+##### Returns
+
+`Promise`<[`QuantConnectCreateLiveResponse`](modules.md#quantconnectcreateliveresponse)\>
+
+#### Defined in
+
+[types/live.ts:103](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L103)
+
+___
+
+### LiquidateLive
+
+Ƭ **LiquidateLive**: (`params`: [`ReadProjectParams`](modules.md#readprojectparams)) => `Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\>
+
+#### Type declaration
+
+▸ (`params`): `Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\>
+
+**`description`** [Liquidate a live algorithm](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/update-live-algorithm/liquidate-live-portfolio)
+
+**`example`**
+```typescript
+const {live} = quantconnect({userId, token})
+
+const {success} = await live.liquidate({ projectId: 2134213 });
+```
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`ReadProjectParams`](modules.md#readprojectparams) |
+
+##### Returns
+
+`Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\>
+
+#### Defined in
+
+[types/live.ts:117](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L117)
+
+___
+
+### StopLive
+
+Ƭ **StopLive**: (`params`: [`ReadProjectParams`](modules.md#readprojectparams)) => `Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\>
+
+#### Type declaration
+
+▸ (`params`): `Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\>
+
+**`description`** [Stop a live algorithm](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/update-live-algorithm/stop-live-algorithm)
+
+**`example`**
+```typescript
+const {live} = quantconnect({userId, token})
+
+const {success} = await live.stop({ projectId: 2134213 });
+```
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`ReadProjectParams`](modules.md#readprojectparams) |
+
+##### Returns
+
+`Promise`<[`QuantConnectResponse`](modules.md#quantconnectresponse)\>
+
+#### Defined in
+
+[types/live.ts:131](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/live.ts#L131)
+
+___
+
+### ProjectLanguage
+
+Ƭ **ProjectLanguage**: ``"C#"`` \| ``"Py"``
+
+#### Defined in
+
+[types/projects.ts:3](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/projects.ts#L3)
+
+___
+
+### ProjectModel
+
+Ƭ **ProjectModel**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `projectId` | `number` |
+| `name` | `string` |
+| `created` | `string` |
+| `modified` | `string` |
+| `language` | [`ProjectLanguage`](modules.md#projectlanguage) |
+
+#### Defined in
+
+[types/projects.ts:5](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/projects.ts#L5)
+
+___
+
+### ReadProjectParams
+
+Ƭ **ReadProjectParams**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `projectId` | `number` |
+
+#### Defined in
+
+[types/projects.ts:13](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/projects.ts#L13)
+
+___
+
+### CreateProjectParams
+
+Ƭ **CreateProjectParams**: `Object`
+
+#### Type declaration
+
+| Name | Type |
+| :------ | :------ |
+| `name` | `string` |
+| `language` | [`ProjectLanguage`](modules.md#projectlanguage) |
+
+#### Defined in
+
+[types/projects.ts:17](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/projects.ts#L17)
+
+___
+
+### UpdateProjectParams
+
+Ƭ **UpdateProjectParams**: [`ReadProjectParams`](modules.md#readprojectparams) & { `name`: `string` ; `description`: `string`  }
+
+#### Defined in
+
+[types/projects.ts:22](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/projects.ts#L22)
+
+___
+
+### QuantConnectProjectsResponse
+
+Ƭ **QuantConnectProjectsResponse**: [`QuantConnectResponse`](modules.md#quantconnectresponse) & { `projects`: [`ProjectModel`](modules.md#projectmodel)[]  }
+
+#### Defined in
+
+[types/projects.ts:27](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/projects.ts#L27)
+
+___
+
+### ReadProject
+
+Ƭ **ReadProject**: (`params?`: [`ReadProjectParams`](modules.md#readprojectparams)) => `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+#### Type declaration
+
+▸ (`params?`): `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+**`description`** [Read a project](https://www.quantconnect.com/docs/v2/our-platform/api-reference/project-management/read-project)
+
+**`example`**
+```typescript
+const { projects } = quantconnect({ userId, token })
+
+const allProjects = await projects.read();
+const specificProject = await projects.read({ projectId: 2134213 });
+```
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params?` | [`ReadProjectParams`](modules.md#readprojectparams) |
+
+##### Returns
+
+`Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+#### Defined in
+
+[types/projects.ts:42](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/projects.ts#L42)
+
+___
+
+### CreateProject
+
+Ƭ **CreateProject**: (`params`: [`CreateProjectParams`](modules.md#createprojectparams)) => `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+#### Type declaration
+
+▸ (`params`): `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+**`description`** [Create a project](https://www.quantconnect.com/docs/v2/our-platform/api-reference/project-management/create-project)
+
+**`example`**
+```typescript
+const {projects} = quantconnect({userId, token})
+
+const {success} = await projects.create({
+     language: "Py",
+      name: "Some project name",
+   })
+```
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`CreateProjectParams`](modules.md#createprojectparams) |
+
+##### Returns
+
+`Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+#### Defined in
+
+[types/projects.ts:59](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/projects.ts#L59)
+
+___
+
+### UpdateProject
+
+Ƭ **UpdateProject**: (`params`: [`UpdateProjectParams`](modules.md#updateprojectparams)) => `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+#### Type declaration
+
+▸ (`params`): `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+**`description`** [Update a project](https://www.quantconnect.com/docs/v2/our-platform/api-reference/project-management/update-project)
+
+**`example`**
+```typescript
+const {projects} = quantconnect({userId, token})
+
+ const {success} = await projects.update({
+      description: "A new description",
+      name: "New name",
+      projectId: 21512,
+    })
+```
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`UpdateProjectParams`](modules.md#updateprojectparams) |
+
+##### Returns
+
+`Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+#### Defined in
+
+[types/projects.ts:77](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/projects.ts#L77)
+
+___
+
+### DeleteProject
+
+Ƭ **DeleteProject**: (`params`: [`ReadProjectParams`](modules.md#readprojectparams)) => `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+#### Type declaration
+
+▸ (`params`): `Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+**`description`** [Delete a project](https://www.quantconnect.com/docs/v2/our-platform/api-reference/project-management/delete-project)
+
+**`example`**
+```typescript
+const {projects} = quantconnect({userId, token})
+
+const {success} = await projects.delete({ projectId: 2134213 });
+```
+
+##### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `params` | [`ReadProjectParams`](modules.md#readprojectparams) |
+
+##### Returns
+
+`Promise`<[`QuantConnectProjectsResponse`](modules.md#quantconnectprojectsresponse)\>
+
+#### Defined in
+
+[types/projects.ts:91](https://github.com/NitayRabi/quantconnect-client/blob/33f252c/src/types/projects.ts#L91)
