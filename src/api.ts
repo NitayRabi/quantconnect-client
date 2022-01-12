@@ -68,7 +68,7 @@ const quantconnect = (config: QuantConnectConfig): QuantConnectClient => {
     );
   }
 
-  const createApiMethod = getCreateApiMethod(config);
+  const createApiMethod = getCreateApiMethod({ userId, token, version });
 
   return {
     authenticate: createApiMethod<"authenticate">("authenticate"),

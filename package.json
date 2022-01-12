@@ -9,7 +9,8 @@
   "scripts": {
     "docs": "typedoc --sort source-order --plugin typedoc-plugin-markdown --out docs src/index.ts",
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "example:js": "node example/javascript-example.js"
   },
   "author": "",
   "license": "ISC",
@@ -24,6 +25,7 @@
     "@types/jest": "^27.4.0",
     "@types/node": "^17.0.1",
     "babel-jest": "^27.4.6",
+    "dotenv-flow": "^3.2.0",
     "jest": "^27.4.7",
     "nock": "^13.2.2",
     "typedoc": "^0.22.10",
