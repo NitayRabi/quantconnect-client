@@ -23,7 +23,7 @@ export type EndpointToMethod = {
   "files/update": UpdateFile;
   "files/delete": DeleteFile;
   "live/read": ReadLive;
-  "live/read/logs": ReadLiveLog;
+  "live/read/log": ReadLiveLog;
   "live/create": CreateLive;
   "live/update/liquidate": LiquidateLive;
   "live/update/stop": StopLive;

@@ -71,7 +71,7 @@ describe("Endpoints", () => {
       },
       apiMethod: live.read,
     },
-    "live/read/logs": {
+    "live/read/log": {
       exampleParams: {
         format: "json",
         projectId: 0,
