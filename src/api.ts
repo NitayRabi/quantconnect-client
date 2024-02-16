@@ -25,23 +25,23 @@ export type CreateAPIMethod = <Key extends keyof EndpointToMethod>(
 
 const getCreateApiMethod: (config: QuantConnectConfig) => CreateAPIMethod =
   ({ token, version, userId }) =>
-  (endpoint) =>
-  async (params?: any) => {
-    const timestamp = new Date().getTime();
-    const hash = await sha256(`${token}:${timestamp}`);
-    try {
-      const { data } = await axios(endpoint, {
-        baseURL: `${BASE_URL}/${version}`,
-        headers: { Timestamp: timestamp.toString() },
-        auth: { username: userId, password: hash },
-        params,
-      });
-      return data;
-    } catch (e) {
-      const msg = e instanceof Error ? e.message : `${e}`;
-      throw createInternalError(msg);
-    }
-  };
+    (endpoint) =>
+      async (params?: any) => {
+        const timestamp = new Date().getTime();
+        const hash = await sha256(`${token}:${timestamp}`);
+        try {
+          const { data } = await axios(endpoint, {
+            baseURL: `${BASE_URL}/${version}`,
+            headers: { Timestamp: timestamp.toString() },
+            auth: { username: userId, password: hash },
+            params,
+          });
+          return data;
+        } catch (e) {
+          const msg = e instanceof Error ? e.message : `${e}`;
+          throw createInternalError(msg);
+        }
+      };
 
 /**
  *
@@ -90,6 +90,12 @@ const quantconnect = (config: QuantConnectConfig): QuantConnectClient => {
       read: createApiMethod("projects/read"),
       update: createApiMethod("projects/update"),
       delete: createApiMethod("projects/delete"),
+    },
+    backtests: {
+      create: createApiMethod("backtests/create"),
+      read: createApiMethod("backtests/read"),
+      update: createApiMethod("backtests/update"),
+      delete: createApiMethod("backtests/delete"),
     },
   };
 };
