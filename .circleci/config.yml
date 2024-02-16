@@ -25,6 +25,9 @@ workflows:
       jobs:
         - publish:
             filters:
+              branches:
+                only: 
+                  - master
               tags:
                 only: /v[0-9]+(\.[0-9]+)*/
   sample: # This is the name of the workflow, feel free to change it to better match your workflow.
