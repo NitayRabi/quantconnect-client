@@ -5,8 +5,8 @@ dotenv.config();
 import quantconnect from "../dist";
 
 const api = quantconnect({
-  userId: process.env.USER_ID,
-  token: process.env.TOKEN,
+  userId: process.env.USER_ID || '',
+  token: process.env.TOKEN || '',
 });
 
 (async function main() {

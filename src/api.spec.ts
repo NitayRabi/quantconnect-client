@@ -1,18 +1,18 @@
 import nock from "nock";
-import quantconnect, { EndpointToMethod } from ".";
+import quantconnect, { CreateBacktestParams, EndpointToMethod, QuantConnectBacktestsResponse, ReadBacktestParams, UpdateBacktestParams } from ".";
 import { BASE_URL } from "./api";
 
 type EndpointTestDescription<Key extends keyof EndpointToMethod> = Parameters<
   EndpointToMethod[Key]
 >[0] extends undefined
   ? {
-      exampleParams?: Parameters<EndpointToMethod[Key]>[0];
-      apiMethod: EndpointToMethod[Key];
-    }
+    exampleParams?: Parameters<EndpointToMethod[Key]>[0];
+    apiMethod: EndpointToMethod[Key];
+  }
   : {
-      exampleParams: Parameters<EndpointToMethod[Key]>[0];
-      apiMethod: EndpointToMethod[Key];
-    };
+    exampleParams: Parameters<EndpointToMethod[Key]>[0];
+    apiMethod: EndpointToMethod[Key];
+  };
 
 type EndpointsTestDescription = {
   [Key in keyof EndpointToMethod]: EndpointTestDescription<Key>;
@@ -22,7 +22,7 @@ describe("Endpoints", () => {
   const mockToken = "214-98islaj";
   const mockUserId = "s231348jksaj";
   const version = "v2";
-  const { authenticate, files, live, projects } = quantconnect({
+  const { authenticate, files, live, projects, backtests } = quantconnect({
     userId: mockUserId,
     token: mockToken,
     version,
@@ -132,6 +132,31 @@ describe("Endpoints", () => {
       },
       apiMethod: projects.delete,
     },
+    "backtests/create": {
+      exampleParams: {
+        name: ""
+      },
+      apiMethod: backtests.create
+    },
+    "backtests/read": {
+      exampleParams: undefined,
+      apiMethod: backtests.read
+    },
+    "backtests/update": {
+      exampleParams: {
+        backtestId: "",
+        description: '',
+        name: "",
+        projectId: 0
+      },
+      apiMethod: backtests.update
+    },
+    "backtests/delete": {
+      exampleParams: {
+        projectId: 0,
+      },
+      apiMethod: backtests.delete
+    }
   };
 
   describe("API endpoints", () => {

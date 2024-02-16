@@ -5,9 +5,9 @@ import {
   UpdateProject,
   DeleteProject,
 } from "./projects";
-import { ReadLive, CreateLive, LiquidateLive, StopLive } from "./live";
+import { ReadLive, CreateLive, LiquidateLive, StopLive, ReadLiveLog } from "./live";
 import { CreateFile, ReadFiles, UpdateFile, DeleteFile } from "./files";
-import { ReadLiveLog } from ".";
+import { CreateBacktest, UpdateBacktest, DeleteBacktest, ReadBacktest } from "./backtests";
 
 /**
  * @hidden
@@ -27,6 +27,10 @@ export type EndpointToMethod = {
   "live/create": CreateLive;
   "live/update/liquidate": LiquidateLive;
   "live/update/stop": StopLive;
+  "backtests/create": CreateBacktest,
+  "backtests/read": ReadBacktest,
+  "backtests/update": UpdateBacktest,
+  "backtests/delete": DeleteBacktest,
 };
 
 export type Method<Return, Params = undefined> = Params extends undefined
@@ -53,5 +57,11 @@ export type QuantConnectClient = {
     read: ReadProject;
     update: UpdateProject;
     delete: DeleteProject;
+  };
+  backtests: {
+    create: CreateBacktest;
+    read: ReadBacktest;
+    update: UpdateBacktest;
+    delete: DeleteBacktest;
   };
 };
