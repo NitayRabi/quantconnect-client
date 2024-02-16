@@ -12,11 +12,7 @@ jobs:
       - image: circleci/node:16.10
     steps:
       - checkout
-      - node/run:
-          name: Build
-          yarn-run: build
-          version: "16.10"
-          pkg-manager: yarn
+      - yarn-run: build
       - run:
           name: Publish to NPM
           command: |
