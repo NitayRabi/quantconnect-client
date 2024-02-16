@@ -9,7 +9,7 @@ orbs:
 jobs:
   publish:
     docker:
-      - image: circleci/node:2021.04
+      - image: circleci/node:16.10
     steps:
       - checkout
       - run:
