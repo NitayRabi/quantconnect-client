@@ -17,7 +17,6 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - checkout
-      - yarn-run: build
       - run:
           name: Publish to NPM
           command: |
@@ -34,9 +33,12 @@ jobs:
 
       - run: yarn install
       - run:
-          name: Run tests
+          name: Typescript
+          command: yarn build
+      - run:
+          name: Jest
           command: yarn test
-
+  
       - save_cache:
           paths:
             - node_modules
