@@ -57,8 +57,7 @@ workflows:
       - test:
           filters:
             branches:
-              only: 
-                - /*/
+              only: /.*/
       - publish:
           requires:
             - "test"
