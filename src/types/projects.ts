@@ -8,7 +8,11 @@ export type ProjectModel = {
   created: string;
   modified: string;
   language: ProjectLanguage;
+  channelId: string;
+  codeRunning: boolean;
+  ownerId: number;
 };
+
 
 export type ReadProjectParams = {
   projectId: number;
