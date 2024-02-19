@@ -1,5 +1,5 @@
 import nock from "nock";
-import quantconnect, { EndpointToMethod } from ".";
+import quantconnect, { EndpointToMethod, QuantConnectResponse, ReadProjectParams } from ".";
 import { BASE_URL } from "./api";
 
 type EndpointTestDescription<Key extends keyof EndpointToMethod> = Parameters<
@@ -162,6 +162,14 @@ describe("Endpoints", () => {
         projectId: 0
       },
       apiMethod: live.portfolio
+    },
+    "live/read/orders": {
+      exampleParams: {
+        projectId: 0,
+        start: 0,
+        end: 0,
+      },
+      apiMethod: live.orders
     }
   };
 

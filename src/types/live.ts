@@ -65,10 +65,14 @@ export type ReadLiveLogParams = ReadProjectParams & {
   start: number;
   /**
    * No logs will be returned after this unixtime.
-
    */
   end: number;
 };
+
+export type ReadLiveOrdersParams = ReadProjectParams & {
+  start: number;
+  end: number;
+}
 
 export type LiveAlgoDescription = {
   projectId: number;
@@ -201,4 +205,4 @@ export type StopLive = (
 
 export type ReadLivePortfolio = (params: ReadProjectParams) => Promise<QuantConnectResponse>;
 
-export type ReadLiveOrders = (params: ReadProjectParams) => Promise<QuantConnectResponse>;
+export type ReadLiveOrders = (params: ReadLiveOrdersParams) => Promise<QuantConnectResponse>;
