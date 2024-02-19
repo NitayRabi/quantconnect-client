@@ -2,7 +2,59 @@ import { ReadProjectParams } from "./projects";
 import { QuantConnectResponse, PaginationParams } from "./core";
 import { Cash, LiveResultsData } from "./models";
 
-export type QuantConnectOrder = any;
+export type OrderEvent = {
+  "symbol-value": string,
+  "symbol-permtick": string,
+  id: string,
+  "algorithm-id": string,
+  "order-id": number,
+  "order-event-id": number,
+  symbol: string,
+  time: number,
+  status: string,
+  "fill-price": number,
+  "fill-price-currency": string,
+  "fill-quantity": number,
+  direction: string,
+  message: string,
+  "is-assignment": boolean,
+  quantity: number,
+}
+
+export type QuantConnectOrder = {
+  Type: number,
+  Id: number,
+  ContingentId: number,
+  BrokerId: string[],
+  Symbol: {
+    Value: string,
+    ID: string,
+    Permtick: string,
+  },
+  Price: number,
+  PriceCurrency: string,
+  Time: string,
+  CreatedTime: string,
+  LastFillTime: string,
+  Quantity: number,
+  Status: number,
+  Tag: string
+  Properties: {
+    TimeInForce: {
+    },
+  },
+  SecurityType: number,
+  Direction: number,
+  Value: number,
+  OrderSubmissionData: {
+    BidPrice: number,
+    AskPrice: number,
+    LastPrice: number,
+  },
+  IsMarketable: boolean,
+  PriceAdjustmentMode: number,
+  Events: OrderEvent[],
+};
 
 export type LiveAlgoStatus =
   | "DeployError"
@@ -72,6 +124,11 @@ export type ReadLiveLogParams = ReadProjectParams & {
 export type ReadLiveOrdersParams = ReadProjectParams & {
   start: number;
   end: number;
+}
+
+export type ReadLiveOrdersResponse = QuantConnectResponse & {
+  length: number;
+  orders: Array<QuantConnectOrder>;
 }
 
 export type LiveAlgoDescription = {
@@ -205,4 +262,4 @@ export type StopLive = (
 
 export type ReadLivePortfolio = (params: ReadProjectParams) => Promise<QuantConnectResponse>;
 
-export type ReadLiveOrders = (params: ReadLiveOrdersParams) => Promise<QuantConnectResponse>;
+export type ReadLiveOrders = (params: ReadLiveOrdersParams) => Promise<ReadLiveOrdersResponse>;

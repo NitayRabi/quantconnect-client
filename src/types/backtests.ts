@@ -1,6 +1,6 @@
 import { ReadProjectParams } from "./projects";
 import { QuantConnectResponse } from "./core";
-import { BacktestModel } from "models";
+import { BacktestModel } from "./models";
 
 export type ReadBacktestParams = ReadProjectParams & {
   backtestId?: string;
