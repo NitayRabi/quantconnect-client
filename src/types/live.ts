@@ -112,13 +112,13 @@ export type ReadLiveLogParams = ReadProjectParams & {
   format: string;
   algorithmId: string;
   /**
-   * No logs will be returned before this unixtime
+   * No logs will be returned before this log line
    */
-  start: number;
+  startLine: number;
   /**
-   * No logs will be returned after this unixtime.
+   * No logs will be returned after this log line.
    */
-  end: number;
+  endLine: number;
 };
 
 export type ReadLiveOrdersParams = ReadProjectParams & {
@@ -162,7 +162,8 @@ export type QuantConnectLiveResponse = QuantConnectResponse & {
 };
 
 export type QuantConnectLiveLogsResponse = QuantConnectResponse & {
-  LiveLogs: Array<string>;
+  logs: Array<string>;
+  length: number;
 };
 
 export type QuantConnectCreateLiveResponse = QuantConnectResponse & {
