@@ -5,7 +5,7 @@ import {
   UpdateProject,
   DeleteProject,
 } from "./projects";
-import { ReadLive, CreateLive, LiquidateLive, StopLive, ReadLiveLog } from "./live";
+import { ReadLive, CreateLive, LiquidateLive, StopLive, ReadLiveLog, ReadLivePortfolio, ReadLiveOrders } from "./live";
 import { CreateFile, ReadFiles, UpdateFile, DeleteFile } from "./files";
 import { CreateBacktest, UpdateBacktest, DeleteBacktest, ReadBacktest } from "./backtests";
 
@@ -24,6 +24,8 @@ export type EndpointToMethod = {
   "files/delete": DeleteFile;
   "live/read": ReadLive;
   "live/read/log": ReadLiveLog;
+  "live/read/portfolio": ReadLivePortfolio;
+  "live/read/orders": ReadLiveOrders;
   "live/create": CreateLive;
   "live/update/liquidate": LiquidateLive;
   "live/update/stop": StopLive;
@@ -44,7 +46,9 @@ export type QuantConnectClient = {
     create: CreateLive;
     stop: StopLive;
     liquidate: LiquidateLive;
-    logs: ReadLiveLog;
+    log: ReadLiveLog;
+    portfolio: ReadLivePortfolio;
+    orders: ReadLiveOrders;
   };
   files: {
     create: CreateFile;

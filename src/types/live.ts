@@ -1,6 +1,6 @@
 import { ReadProjectParams } from "./projects";
 import { QuantConnectResponse, PaginationParams } from "./core";
-import { LiveResultsData } from "models";
+import { Cash, LiveResultsData } from "./models";
 
 export type QuantConnectOrder = any;
 
@@ -65,10 +65,14 @@ export type ReadLiveLogParams = ReadProjectParams & {
   start: number;
   /**
    * No logs will be returned after this unixtime.
-
    */
   end: number;
 };
+
+export type ReadLiveOrdersParams = ReadProjectParams & {
+  start: number;
+  end: number;
+}
 
 export type LiveAlgoDescription = {
   projectId: number;
@@ -84,6 +88,13 @@ export type LiveAlgoDescription = {
 export type QuantConnectLiveListResponse = QuantConnectResponse & {
   live: Array<LiveAlgoDescription>;
 };
+
+export type ReadLivePortfolioResponse = QuantConnectResponse & {
+  portfolio: {
+    holdings: Record<string, LiveResultsData['Holdings']>,
+    cash: Record<string, Cash>
+  }
+}
 
 export type QuantConnectLiveResponse = QuantConnectResponse & {
   LiveResults: {
@@ -126,8 +137,8 @@ export type ReadLive = <T extends ReadLiveListParams | ReadLiveAlgoParams>(
   params: T
 ) => Promise<
   T extends ReadLiveAlgoParams
-    ? QuantConnectLiveResponse
-    : QuantConnectLiveListResponse
+  ? QuantConnectLiveResponse
+  : QuantConnectLiveListResponse
 >;
 
 /**
@@ -190,3 +201,8 @@ export type LiquidateLive = (
 export type StopLive = (
   params: ReadProjectParams
 ) => Promise<QuantConnectResponse>;
+
+
+export type ReadLivePortfolio = (params: ReadProjectParams) => Promise<QuantConnectResponse>;
+
+export type ReadLiveOrders = (params: ReadLiveOrdersParams) => Promise<QuantConnectResponse>;

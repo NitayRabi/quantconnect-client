@@ -1,5 +1,5 @@
 import nock from "nock";
-import quantconnect, { CreateBacktestParams, EndpointToMethod, QuantConnectBacktestsResponse, ReadBacktestParams, UpdateBacktestParams } from ".";
+import quantconnect, { EndpointToMethod, QuantConnectResponse, ReadProjectParams } from ".";
 import { BASE_URL } from "./api";
 
 type EndpointTestDescription<Key extends keyof EndpointToMethod> = Parameters<
@@ -79,7 +79,7 @@ describe("Endpoints", () => {
         start: 0,
         end: 0,
       },
-      apiMethod: live.logs,
+      apiMethod: live.log,
     },
     "live/create": {
       exampleParams: {
@@ -156,6 +156,20 @@ describe("Endpoints", () => {
         projectId: 0,
       },
       apiMethod: backtests.delete
+    },
+    "live/read/portfolio": {
+      exampleParams: {
+        projectId: 0
+      },
+      apiMethod: live.portfolio
+    },
+    "live/read/orders": {
+      exampleParams: {
+        projectId: 0,
+        start: 0,
+        end: 0,
+      },
+      apiMethod: live.orders
     }
   };
 

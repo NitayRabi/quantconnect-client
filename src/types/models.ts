@@ -321,6 +321,7 @@ export type BacktestModel = {
   created: string;
 };
 
+
 export type LiveResultsData = {
   Holdings: {
     Symbol: {
@@ -358,4 +359,12 @@ export type LiveResultsData = {
   Statistics: string;
   RuntimeStatistics: string;
   ServerStatistics: string;
+};
+
+export type Cash = {
+  Symbol: string;
+  Amount: number;
+  ConversionRate: number;
+  CurrencySymbol: string;
+  ValueInAccountCurrency: number;
 };
