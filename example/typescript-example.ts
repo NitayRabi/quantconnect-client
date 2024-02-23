@@ -17,7 +17,7 @@ const api = quantconnect({
   const [{ projectId, deployId }] = live;
 
   // Fetch the full data on the first algorithm
-  const result = await api.live.orders({ projectId, start: 0, end: Date().now() / 1000 });
+  const result = await api.live.read({ projectId, deployId });
 
-  console.log(JSON.stringify({ result }, null, 2));
+  console.log(result);
 })();

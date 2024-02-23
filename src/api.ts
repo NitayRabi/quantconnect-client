@@ -80,6 +80,7 @@ const quantconnect = (config: QuantConnectConfig): QuantConnectClient => {
       log: createApiMethod("live/read/log"),
       portfolio: createApiMethod("live/read/portfolio"),
       orders: createApiMethod("live/read/orders"),
+      chart: createApiMethod("live/chart/read"),
     },
     files: {
       create: createApiMethod("files/create"),
