@@ -1,6 +1,6 @@
 import { ReadProjectParams } from "./projects";
 import { QuantConnectResponse, PaginationParams } from "./core";
-import { Cash, LiveResultsData } from "./models";
+import { Cash, ChartsObject, LiveResultsData } from "./models";
 
 export type OrderEvent = {
   "symbol-value": string,
@@ -129,6 +129,17 @@ export type ReadLiveOrdersParams = ReadProjectParams & {
 export type ReadLiveOrdersResponse = QuantConnectResponse & {
   length: number;
   orders: Array<QuantConnectOrder>;
+}
+
+export type ReadLiveChartParams = ReadProjectParams & {
+  name: string;
+  start: number;
+  end: number;
+  count: number;
+}
+
+export type ReadLiveChartResponse = QuantConnectResponse & {
+  chart: ChartsObject
 }
 
 export type LiveAlgoDescription = {
@@ -264,3 +275,4 @@ export type StopLive = (
 export type ReadLivePortfolio = (params: ReadProjectParams) => Promise<QuantConnectResponse>;
 
 export type ReadLiveOrders = (params: ReadLiveOrdersParams) => Promise<ReadLiveOrdersResponse>;
+export type ReadLiveChart = (params: ReadLiveChartParams) => Promise<ReadLiveChartResponse>;

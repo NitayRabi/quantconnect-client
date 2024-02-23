@@ -78,7 +78,7 @@ export type OrderObject = {
 export type ChartsObject = {
   Name: string;
   ChartType: string;
-  Series: {
+  Series: Record<string, {
     Name: string;
     Unit: string;
     Index: number;
@@ -91,7 +91,7 @@ export type ChartsObject = {
     SeriesType: string;
     Color: string;
     ScatterMarkerSymbol: string;
-  };
+  }>;
 };
 
 export type AlphaObject = {
