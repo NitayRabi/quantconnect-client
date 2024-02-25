@@ -78,21 +78,23 @@ export type OrderObject = {
 export type ChartsObject = {
   Name: string;
   ChartType: string;
-  Series: Record<string, {
-    Name: string;
-    Unit: string;
-    Index: number;
-    Values: [
-      {
-        x: string;
-        y: number;
-      }
-    ];
-    SeriesType: string;
-    Color: string;
-    ScatterMarkerSymbol: string;
-  }>;
+  Series: Record<string, Series>;
 };
+
+export type Series = {
+  Name: string;
+  Unit: string;
+  Index: number;
+  Values: [
+    {
+      x: string;
+      y: number;
+    }
+  ];
+  SeriesType: number;
+  Color: string;
+  ScatterMarkerSymbol: string;
+}
 
 export type AlphaObject = {
   MeanPopulationScore: {
