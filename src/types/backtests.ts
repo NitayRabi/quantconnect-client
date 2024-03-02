@@ -4,6 +4,7 @@ import { BacktestModel } from "./models";
 
 export type ReadBacktestParams = ReadProjectParams & {
   backtestId?: string;
+  includeStatistics?: boolean;
 };
 
 export type CreateBacktestParams = {
