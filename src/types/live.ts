@@ -140,6 +140,7 @@ export type ReadLiveChartParams = ReadProjectParams & {
 
 export type ReadLiveChartResponse = QuantConnectResponse & {
   chart: ChartsObject
+  status: string;
 }
 
 export type LiveAlgoDescription = {
