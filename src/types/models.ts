@@ -240,6 +240,23 @@ export type BacktestModel = {
   backtestId: string;
   completed: boolean;
   progress: number;
+  projectId: number;
+  optimizationId: number;
+  sparkline: string;
+  sharpeRatio: number;
+  alpha: number;
+  beta: number;
+  compoundingAnnualReturn: number;
+  drawdown: number;
+  lossRate: number;
+  netProfit: number;
+  parameterSet: Record<string, string>;
+  psr: number;
+  securityTypes: number;
+  tradeableDates: number
+  trades: number;
+  treynorRatio: number;
+  winRate: number;
   result: {
     RollingWindow: {
       TradeStatistics: {
