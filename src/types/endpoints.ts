@@ -8,7 +8,7 @@ import {
 import { ReadLive, CreateLive, LiquidateLive, StopLive, ReadLiveLog, ReadLivePortfolio, ReadLiveOrders, ReadLiveChart } from "./live";
 import { CreateFile, ReadFiles, UpdateFile, DeleteFile } from "./files";
 import { CreateBacktest, UpdateBacktest, DeleteBacktest, ReadBacktest } from "./backtests";
-import { ReadUser } from "user";
+import { ReadUser } from "./user";
 
 /**
  * @hidden
