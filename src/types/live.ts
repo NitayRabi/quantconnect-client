@@ -2,7 +2,7 @@ import { ReadProjectParams } from "./projects";
 import { QuantConnectResponse, PaginationParams } from "./core";
 import { Cash, ChartsObject, LiveResultsData } from "./models";
 
-export type OrderEvent = {
+export type QuantConnectOrderEvent = {
   "symbol-value": string,
   "symbol-permtick": string,
   id: string,
@@ -53,7 +53,7 @@ export type QuantConnectOrder = {
   },
   IsMarketable: boolean,
   PriceAdjustmentMode: number,
-  Events: OrderEvent[],
+  Events: QuantConnectOrderEvent[],
 };
 
 export type LiveAlgoStatus =

@@ -100,6 +100,9 @@ const quantconnect = (config: QuantConnectConfig): QuantConnectClient => {
       update: createApiMethod("backtests/update"),
       delete: createApiMethod("backtests/delete"),
     },
+    user: {
+      read: createApiMethod("user/read"),
+    },
   };
 };
 

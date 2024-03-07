@@ -1,5 +1,5 @@
 import nock from "nock";
-import quantconnect, { EndpointToMethod, QuantConnectResponse, ReadLiveChartParams, ReadLiveChartResponse, ReadProjectParams } from ".";
+import quantconnect, { EndpointToMethod, QuantConnectResponse, ReadLiveChartParams, ReadLiveChartResponse, ReadProjectParams, ReadUserResponse } from ".";
 import { BASE_URL } from "./api";
 
 type EndpointTestDescription<Key extends keyof EndpointToMethod> = Parameters<
@@ -22,7 +22,7 @@ describe("Endpoints", () => {
   const mockToken = "214-98islaj";
   const mockUserId = "s231348jksaj";
   const version = "v2";
-  const { authenticate, files, live, projects, backtests } = quantconnect({
+  const { authenticate, files, live, projects, backtests, user } = quantconnect({
     userId: mockUserId,
     token: mockToken,
     version,
@@ -174,6 +174,10 @@ describe("Endpoints", () => {
     "live/chart/read": {
       exampleParams: { count: 0, projectId: 0, name: '', end: 0, start: 0 },
       apiMethod: live.chart
+    },
+    "user/read": {
+      exampleParams: undefined,
+      apiMethod: user.read
     }
   };
 
