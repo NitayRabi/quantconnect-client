@@ -8,6 +8,7 @@ import {
 import { ReadLive, CreateLive, LiquidateLive, StopLive, ReadLiveLog, ReadLivePortfolio, ReadLiveOrders, ReadLiveChart } from "./live";
 import { CreateFile, ReadFiles, UpdateFile, DeleteFile } from "./files";
 import { CreateBacktest, UpdateBacktest, DeleteBacktest, ReadBacktest } from "./backtests";
+import { ReadUser } from "user";
 
 /**
  * @hidden
@@ -34,6 +35,7 @@ export type EndpointToMethod = {
   "backtests/read": ReadBacktest,
   "backtests/update": UpdateBacktest,
   "backtests/delete": DeleteBacktest,
+  "user/read": ReadUser
 };
 
 export type Method<Return, Params = undefined> = Params extends undefined
@@ -70,4 +72,7 @@ export type QuantConnectClient = {
     update: UpdateBacktest;
     delete: DeleteBacktest;
   };
+  user: {
+    read: ReadUser;
+  }
 };
