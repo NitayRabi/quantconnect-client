@@ -189,6 +189,8 @@ export type QuantConnectCreateLiveResponse = QuantConnectResponse & {
   error?: string;
 };
 
+
+
 /**
  *
  * @description [Get live algorithm(s) data](https://www.quantconnect.com/docs/v2/our-platform/api-reference/live-management/read-live-algorithm/get-live-algorithm-statistics)
@@ -203,13 +205,13 @@ export type QuantConnectCreateLiveResponse = QuantConnectResponse & {
  * const allRunningAlgorithms = await live.read({ "status": "Running" })
  * ```
  */
-export type ReadLive = <T extends ReadLiveListParams | ReadLiveAlgoParams>(
-  params: T
-) => Promise<
-  T extends ReadLiveAlgoParams
-  ? QuantConnectLiveResponse
-  : QuantConnectLiveListResponse
->;
+export type ReadLive = (
+  params: ReadLiveAlgoParams
+) => Promise<QuantConnectLiveResponse>;
+
+export type LiveList = (
+  params: ReadLiveListParams
+) => Promise<QuantConnectLiveListResponse>;
 
 /**
  *

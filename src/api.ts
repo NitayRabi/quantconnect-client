@@ -73,6 +73,7 @@ const quantconnect = (config: QuantConnectConfig): QuantConnectClient => {
   return {
     authenticate: createApiMethod<"authenticate">("authenticate"),
     live: {
+      list: createApiMethod("live/list"),
       read: createApiMethod("live/read"),
       create: createApiMethod("live/create"),
       stop: createApiMethod("live/update/stop"),

@@ -5,7 +5,7 @@ import {
   UpdateProject,
   DeleteProject,
 } from "./projects";
-import { ReadLive, CreateLive, LiquidateLive, StopLive, ReadLiveLog, ReadLivePortfolio, ReadLiveOrders, ReadLiveChart } from "./live";
+import { ReadLive, CreateLive, LiquidateLive, StopLive, ReadLiveLog, ReadLivePortfolio, ReadLiveOrders, ReadLiveChart, LiveList } from "./live";
 import { CreateFile, ReadFiles, UpdateFile, DeleteFile } from "./files";
 import { CreateBacktest, UpdateBacktest, DeleteBacktest, ReadBacktest } from "./backtests";
 import { ReadUser } from "./user";
@@ -23,6 +23,7 @@ export type EndpointToMethod = {
   "files/read": ReadFiles;
   "files/update": UpdateFile;
   "files/delete": DeleteFile;
+  "live/list": LiveList;
   "live/read": ReadLive;
   "live/read/log": ReadLiveLog;
   "live/read/portfolio": ReadLivePortfolio;
@@ -45,6 +46,7 @@ export type Method<Return, Params = undefined> = Params extends undefined
 export type QuantConnectClient = {
   authenticate: Authenticate;
   live: {
+    list: LiveList;
     read: ReadLive;
     create: CreateLive;
     stop: StopLive;

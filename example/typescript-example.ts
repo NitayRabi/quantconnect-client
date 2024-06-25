@@ -11,7 +11,7 @@ const api = quantconnect({
 
 (async function main() {
   // Get all live running algorithms
-  const { live } = await api.live.read({ status: "Running" });
+  const { live } = await api.live.list({ status: "Running" });
 
   // Get the first algo deployId and projectId
   const [{ projectId, deployId }] = live;
