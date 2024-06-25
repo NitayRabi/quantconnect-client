@@ -64,10 +64,16 @@ describe("Endpoints", () => {
       },
       apiMethod: files.delete,
     },
+    "live/list": {
+      exampleParams: {
+        status: "Completed",
+      },
+      apiMethod: live.list,
+    },
     "live/read": {
       exampleParams: {
         projectId: 2141241,
-        status: "Completed",
+        deployId: '12331',
       },
       apiMethod: live.read,
     },
